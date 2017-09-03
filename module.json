@@ -1,9 +1,9 @@
 {
     "repos": "sgsoft-studio/base",
     "alias": "webed-core",
-    "name": "WebEd core module",
-    "author": "Tedozi Manson - <a href=\"https://github.com/duyphan2502\">https://github.com/duyphan2502</a>",
+    "name": "CleanSoft core module",
+    "author": "",
     "description": "WebEd core module",
-    "namespace": "WebEd\\Base",
+    "namespace": "CleanSoft\\Modules\\Core",
     "autoload": "psr-4"
 }
