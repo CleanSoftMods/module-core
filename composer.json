@@ -25,7 +25,15 @@
   "repositories": [
     {
       "type": "vcs",
+      "url": "https://github.com/cysha/installers"
+    },
+    {
+      "type": "vcs",
       "url": "https://github.com/cleansoftmods/core-acl.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/cleansoftmods/core-assets.git"
     }
   ],
   "require": {
