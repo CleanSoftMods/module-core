@@ -63,17 +63,17 @@ class ModuleProvider extends ServiceProvider
         /**
          * Other module providers
          */
-        $this->app->register(\WebEd\Base\Shortcode\Providers\ModuleProvider::class);
-        $this->app->register(\WebEd\Base\Caching\Providers\ModuleProvider::class);
-        $this->app->register(\WebEd\Base\ACL\Providers\ModuleProvider::class);
-        $this->app->register(\WebEd\Base\ModulesManagement\Providers\ModuleProvider::class);
-        $this->app->register(\WebEd\Base\AssetsManagement\Providers\ModuleProvider::class);
+        $this->app->register(\CleanSoft\Modules\Core\Shortcode\Providers\ModuleProvider::class);
+        $this->app->register(\CleanSoft\Modules\Core\Caching\Providers\ModuleProvider::class);
+        $this->app->register(\CleanSoft\Modules\Core\ACL\Providers\ModuleProvider::class);
+        $this->app->register(\CleanSoft\Modules\Core\ModulesManagement\Providers\ModuleProvider::class);
+        $this->app->register(\CleanSoft\Modules\Core\AssetsManagement\Providers\ModuleProvider::class);
 
-        $this->app->register(\WebEd\Base\Hook\Providers\ModuleProvider::class);
-        $this->app->register(\WebEd\Base\Menu\Providers\ModuleProvider::class);
-        $this->app->register(\WebEd\Base\Settings\Providers\ModuleProvider::class);
-        $this->app->register(\WebEd\Base\ThemesManagement\Providers\ModuleProvider::class);
-        $this->app->register(\WebEd\Base\Users\Providers\ModuleProvider::class);
+        $this->app->register(\CleanSoft\Modules\Core\Hook\Providers\ModuleProvider::class);
+        $this->app->register(\CleanSoft\Modules\Core\Menu\Providers\ModuleProvider::class);
+        $this->app->register(\CleanSoft\Modules\Core\Settings\Providers\ModuleProvider::class);
+        $this->app->register(\CleanSoft\Modules\Core\ThemesManagement\Providers\ModuleProvider::class);
+        $this->app->register(\CleanSoft\Modules\Core\Users\Providers\ModuleProvider::class);
 
         foreach (config('webed.external_core', []) as $item) {
             $this->app->register($item);
