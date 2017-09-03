@@ -42,7 +42,7 @@
     "laravelcollective/html": "5.4.*",
     "maatwebsite/excel": "~2.1.0",
     "yajra/laravel-datatables-oracle": "^7.0",
-    "cleansoftmods/helloworld": "dev-master",
+    "cleansoftmods/helloworld": "3.1.*",
     "sgsoft-studio/caching": "4.0.x-dev",
     "sgsoft-studio/elfinder": "4.0.x-dev",
     "sgsoft-studio/hook": "4.0.x-dev",
