@@ -34,7 +34,7 @@
         "doctrine/dbal": "^2.5",
         "laravelcollective/html": "5.4.*",
         "yajra/laravel-datatables-oracle": "^7.0",
-        "cleansoftmods/acl": "3.1.*",
+        "cleansoftmods/core-acl": "4.0-dev",
         "sgsoft-studio/assets-management": "4.0.*",
         "sgsoft-studio/caching": "4.0.*",
         "sgsoft-studio/elfinder": "4.0.*",
