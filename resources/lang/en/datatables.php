@@ -21,8 +21,10 @@ return [
     'edit' => 'Edit',
     'restore' => 'Restore',
     'heading' => [
+            'name' => 'Name',
         'title' => 'Title',
         'slug' => 'Slug',
+            'module' => 'Module',
         'page_template' => 'Page template',
         'status' => 'Status',
         'order' => 'Order',
@@ -31,4 +33,24 @@ return [
         'deleted_at' => 'Deleted at',
         'actions' => 'Actions',
     ],
+
+
+    'permission' => [
+        'heading' => [
+            'name' => 'Name',
+            'slug' => 'Slug',
+            'module' => 'Module',
+        ],
+    ],
+
+
+
+    'role' => [
+        'heading' => [
+            'name' => 'Name',
+            'slug' => 'Slug',
+        ],
+    ],
+
+
 ];

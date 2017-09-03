@@ -120,6 +120,18 @@ if (!defined('WEBED_DASHBOARD_OTHERS')) {
     define('WEBED_DASHBOARD_OTHERS', 'webed-dashboard.index.other');
 }
 
+
+
+if (!defined('WEBED_ACL_PERMISSION')) {
+    define('WEBED_ACL_PERMISSION', 'webed-acl.permission');
+}
+
+if (!defined('WEBED_ACL_ROLE')) {
+    define('WEBED_ACL_ROLE', 'webed-acl.role');
+}
+
+
+
 class Constants
 {
     const SUCCESS_CODE = 201;
