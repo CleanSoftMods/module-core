@@ -1,7 +1,7 @@
-<?php namespace WebEd\Base\ACL\Repositories;
+<?php namespace CleanSoft\Modules\Core\Repositories;
 
-use WebEd\Base\Repositories\Eloquent\EloquentBaseRepository;
-use WebEd\Base\ACL\Repositories\Contracts\PermissionRepositoryContract;
+use CleanSoft\Modules\Core\Repositories\Contracts\PermissionRepositoryContract;
+use CleanSoft\Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 
 class PermissionRepository extends EloquentBaseRepository implements PermissionRepositoryContract
 {

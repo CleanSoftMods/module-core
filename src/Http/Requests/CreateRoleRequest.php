@@ -1,6 +1,4 @@
-<?php namespace WebEd\Base\ACL\Http\Requests;
-
-use WebEd\Base\Http\Requests\Request;
+<?php namespace CleanSoft\Modules\Core\Http\Requests;
 
 class CreateRoleRequest extends Request
 {

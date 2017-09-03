@@ -1,6 +1,6 @@
-<?php namespace WebEd\Base\ACL\Repositories\Contracts;
+<?php namespace CleanSoft\Modules\Core\Repositories\Contracts;
 
-use WebEd\Base\ACL\Models\Role;
+use CleanSoft\Modules\Core\Models\Role;
 
 interface RoleRepositoryContract
 {

@@ -1,7 +1,6 @@
-<?php namespace WebEd\Base\ACL\Http\DataTables;
+<?php namespace CleanSoft\Modules\Core\Http\DataTables;
 
-use WebEd\Base\ACL\Models\Role;
-use WebEd\Base\Http\DataTables\AbstractDataTables;
+use CleanSoft\Modules\Core\Models\Role;
 use Yajra\Datatables\Engines\CollectionEngine;
 use Yajra\Datatables\Engines\EloquentEngine;
 use Yajra\Datatables\Engines\QueryBuilderEngine;
@@ -67,7 +66,6 @@ class RolesListDataTable extends AbstractDataTables
     public function run()
     {
         $this->setAjaxUrl(route('admin::acl-roles.index.post'), 'POST');
-
         $this
             ->addFilter(1, form()->text('name', '', [
                 'class' => 'form-control form-filter input-sm',
@@ -77,12 +75,10 @@ class RolesListDataTable extends AbstractDataTables
                 'class' => 'form-control form-filter input-sm',
                 'placeholder' => trans('webed-core::datatables.search') . '...',
             ]));
-
         $this->withGroupActions([
             '' => trans('webed-core::datatables.select') . '...',
             'deleted' => trans('webed-core::datatables.delete_these_items'),
         ]);
-
         return $this->view();
     }
 
@@ -102,7 +98,6 @@ class RolesListDataTable extends AbstractDataTables
                 /*Edit link*/
                 $deleteLink = route('admin::acl-roles.delete.delete', ['id' => $item->id]);
                 $editLink = route('admin::acl-roles.edit.get', ['id' => $item->id]);
-
                 /*Buttons*/
                 $editBtn = link_to($editLink, trans('webed-core::datatables.edit'), ['class' => 'btn btn-outline green btn-sm']);
                 $deleteBtn = form()->button(trans('webed-core::datatables.delete'), [
@@ -112,7 +107,6 @@ class RolesListDataTable extends AbstractDataTables
                     'data-toggle' => 'confirmation',
                     'class' => 'btn btn-outline red-sunglo btn-sm ajax-link',
                 ]);
-
                 return $editBtn . $deleteBtn;
             });
     }

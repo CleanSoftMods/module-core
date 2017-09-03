@@ -1,16 +1,41 @@
-<?php namespace WebEd\Base\ACL\Models\Traits;
+<?php namespace CleanSoft\Modules\Core\Models\Traits;
 
-use WebEd\Base\ACL\Models\Role;
+use CleanSoft\Modules\Core\Models\Role;
 
 trait UserAuthorizable
 {
     /**
-     * Set relationship
-     * @return mixed
+     * @param array|string $roles
+     * @return bool
      */
-    public function roles()
+    public function hasRole($roles)
     {
-        return $this->belongsToMany(Role::class, webed_db_prefix() . 'users_roles', 'user_id', 'role_id');
+        if ($this->isSuperAdmin()) {
+            return true;
+        }
+        if (!is_array($roles)) {
+            $roles = func_get_args();
+        }
+        if (!$roles) {
+            return true;
+        }
+        $roles = array_values($roles);
+        if (check_user_acl()->hasRoles($this->id, $roles)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isSuperAdmin()
+    {
+        $this->setupUser();
+        if (check_user_acl()->hasRoles($this->id, ['super-admin'])) {
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -21,10 +46,8 @@ trait UserAuthorizable
         if (!$this->id || check_user_acl()->getRoles($this->id)) {
             return;
         }
-
         $relatedRoles = $this->roles()->select('slug')->get()->pluck('slug')->toArray();
         check_user_acl()->pushRoles($this->id, $relatedRoles);
-
         $relatedPermissions = static::join(webed_db_prefix() . 'users_roles', webed_db_prefix() . 'users_roles.user_id', '=', webed_db_prefix() . 'users.id')
             ->join(webed_db_prefix() . 'roles', webed_db_prefix() . 'users_roles.role_id', '=', webed_db_prefix() . 'roles.id')
             ->join(webed_db_prefix() . 'roles_permissions', webed_db_prefix() . 'roles_permissions.role_id', '=', webed_db_prefix() . 'roles.id')
@@ -40,43 +63,12 @@ trait UserAuthorizable
     }
 
     /**
-     * @return bool
+     * Set relationship
+     * @return mixed
      */
-    public function isSuperAdmin()
+    public function roles()
     {
-        $this->setupUser();
-
-        if (check_user_acl()->hasRoles($this->id, ['super-admin'])) {
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * @param array|string $roles
-     * @return bool
-     */
-    public function hasRole($roles)
-    {
-        if ($this->isSuperAdmin()) {
-            return true;
-        }
-
-        if (!is_array($roles)) {
-            $roles = func_get_args();
-        }
-
-        if (!$roles) {
-            return true;
-        }
-
-        $roles = array_values($roles);
-
-        if (check_user_acl()->hasRoles($this->id, $roles)) {
-            return true;
-        }
-
-        return false;
+        return $this->belongsToMany(Role::class, webed_db_prefix() . 'users_roles', 'user_id', 'role_id');
     }
 
     /**
@@ -88,21 +80,16 @@ trait UserAuthorizable
         if ($this->isSuperAdmin()) {
             return true;
         }
-
         if (!is_array($permissions)) {
             $permissions = func_get_args();
         }
-
         if (!$permissions) {
             return true;
         }
-
         $permissions = array_values($permissions);
-
         if (check_user_acl()->hasPermissions($this->id, $permissions)) {
             return true;
         }
-
         return false;
     }
 }

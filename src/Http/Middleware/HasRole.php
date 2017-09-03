@@ -1,6 +1,6 @@
-<?php namespace WebEd\Base\ACL\Http\Middleware;
+<?php namespace CleanSoft\Modules\Core\Http\Middleware;
 
-use \Closure;
+use Closure;
 
 class HasRole
 {
@@ -22,7 +22,6 @@ class HasRole
         if (!$request->user() || !$request->user()->hasRole($roles)) {
             abort(\Constants::FORBIDDEN_CODE);
         }
-
         return $next($request);
     }
 }

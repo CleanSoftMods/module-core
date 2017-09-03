@@ -1,8 +1,8 @@
-<?php namespace WebEd\Base\ACL\Repositories;
+<?php namespace CleanSoft\Modules\Core\Repositories;
 
-use WebEd\Base\ACL\Models\Role;
-use WebEd\Base\ACL\Repositories\Contracts\RoleRepositoryContract;
-use WebEd\Base\Repositories\Eloquent\EloquentBaseRepositoryCacheDecorator;
+use CleanSoft\Modules\Core\Models\Role;
+use CleanSoft\Modules\Core\Repositories\Contracts\RoleRepositoryContract;
+use CleanSoft\Modules\Core\Repositories\Eloquent\EloquentBaseRepositoryCacheDecorator;
 
 class RoleRepositoryCacheDecorator extends EloquentBaseRepositoryCacheDecorator implements RoleRepositoryContract
 {

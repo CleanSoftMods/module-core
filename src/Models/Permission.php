@@ -1,17 +1,14 @@
-<?php namespace WebEd\Base\ACL\Models;
+<?php namespace CleanSoft\Modules\Core\Models;
 
-use WebEd\Base\ACL\Models\Contracts\PermissionModelContract;
-use WebEd\Base\Models\EloquentBase as BaseModel;
+use CleanSoft\Modules\Core\Models\Contracts\PermissionModelContract;
+use CleanSoft\Modules\Core\Models\EloquentBase as BaseModel;
 
 class Permission extends BaseModel implements PermissionModelContract
 {
-    protected $table = 'permissions';
-
-    protected $primaryKey = 'id';
-
-    protected $fillable = ['name', 'slug', 'module'];
-
     public $timestamps = false;
+    protected $table = 'permissions';
+    protected $primaryKey = 'id';
+    protected $fillable = ['name', 'slug', 'module'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany

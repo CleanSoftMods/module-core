@@ -1,8 +1,8 @@
-<?php namespace WebEd\Base\ACL\Models;
+<?php namespace CleanSoft\Modules\Core\Models;
 
-use WebEd\Base\ACL\Models\Contracts\RoleModelContract;
-use WebEd\Base\Models\EloquentBase as BaseModel;
-use WebEd\Base\Users\Models\User;
+use CleanSoft\Modules\Core\Models\Contracts\RoleModelContract;
+use CleanSoft\Modules\Core\Models\EloquentBase as BaseModel;
+use CleanSoft\Modules\Core\Users\Models\User;
 
 class Role extends BaseModel implements RoleModelContract
 {

@@ -1,5 +1,4 @@
-<?php namespace WebEd\Base\ACL\Support;
-
+<?php namespace CleanSoft\Modules\Core\Support;
 class CheckUserACL
 {
     protected $permissions = [];

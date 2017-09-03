@@ -1,8 +1,8 @@
-<?php namespace WebEd\Base\ACL\Facades;
+<?php namespace CleanSoft\Modules\Core\Facades;
 
+use CleanSoft\Modules\Core\Support\CheckCurrentUserACL;
+use CleanSoft\Modules\Core\Support\CheckUserACL;
 use Illuminate\Support\Facades\Facade;
-use WebEd\Base\ACL\Support\CheckCurrentUserACL;
-use WebEd\Base\ACL\Support\CheckUserACL;
 
 class CheckUserACLFacade extends Facade
 {

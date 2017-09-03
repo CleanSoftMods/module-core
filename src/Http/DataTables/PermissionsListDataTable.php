@@ -1,7 +1,6 @@
-<?php namespace WebEd\Base\ACL\Http\DataTables;
+<?php namespace CleanSoft\Modules\Core\Http\DataTables;
 
-use WebEd\Base\ACL\Models\Permission;
-use WebEd\Base\Http\DataTables\AbstractDataTables;
+use CleanSoft\Modules\Core\Models\Permission;
 use Yajra\Datatables\Engines\CollectionEngine;
 use Yajra\Datatables\Engines\EloquentEngine;
 use Yajra\Datatables\Engines\QueryBuilderEngine;
@@ -62,7 +61,6 @@ class PermissionsListDataTable extends AbstractDataTables
     public function run()
     {
         $this->setAjaxUrl(route('admin::acl-permissions.index.post'), 'POST');
-
         $this
             ->addFilter(1, form()->text('name', '', [
                 'class' => 'form-control form-filter input-sm',
@@ -76,7 +74,6 @@ class PermissionsListDataTable extends AbstractDataTables
                 'class' => 'form-control form-filter input-sm',
                 'placeholder' => trans('webed-core::datatables.search') . '...',
             ]));
-
         return $this->view();
     }
 

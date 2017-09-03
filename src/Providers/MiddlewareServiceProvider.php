@@ -5,12 +5,8 @@ use CleanSoft\Modules\Core\Http\Middleware\BootstrapModuleMiddleware;
 use CleanSoft\Modules\Core\Http\Middleware\ConstructionModeMiddleware;
 use CleanSoft\Modules\Core\Http\Middleware\CorsMiddleware;
 use CleanSoft\Modules\Core\Http\Middleware\DashboardLanguageMiddleware;
-
-
-use CleanSoft\Modules\Core\ACL\Http\Middleware\HasPermission;
-use CleanSoft\Modules\Core\ACL\Http\Middleware\HasRole;
-
-
+use CleanSoft\Modules\Core\Http\Middleware\HasPermission;
+use CleanSoft\Modules\Core\Http\Middleware\HasRole;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
 

@@ -1,5 +1,4 @@
-<?php namespace WebEd\Base\ACL\Repositories\Contracts;
-
+<?php namespace CleanSoft\Modules\Core\Repositories\Contracts;
 interface PermissionRepositoryContract
 {
     /**

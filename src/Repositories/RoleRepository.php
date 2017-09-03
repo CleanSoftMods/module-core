@@ -1,9 +1,9 @@
-<?php namespace WebEd\Base\ACL\Repositories;
+<?php namespace CleanSoft\Modules\Core\Repositories;
 
-use WebEd\Base\ACL\Models\Role;
-use WebEd\Base\Models\Contracts\BaseModelContract;
-use WebEd\Base\Repositories\Eloquent\EloquentBaseRepository;
-use WebEd\Base\ACL\Repositories\Contracts\RoleRepositoryContract;
+use CleanSoft\Modules\Core\Models\Contracts\BaseModelContract;
+use CleanSoft\Modules\Core\Models\Role;
+use CleanSoft\Modules\Core\Repositories\Contracts\RoleRepositoryContract;
+use CleanSoft\Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 
 class RoleRepository extends EloquentBaseRepository implements RoleRepositoryContract
 {
@@ -16,7 +16,6 @@ class RoleRepository extends EloquentBaseRepository implements RoleRepositoryCon
     public function __construct(BaseModelContract $model)
     {
         parent::__construct($model);
-
         $this->cannotDelete = array_merge(config('webed-acl.cannot_delete_roles', []), ['super-admin']);
     }
 
@@ -37,7 +36,6 @@ class RoleRepository extends EloquentBaseRepository implements RoleRepositoryCon
             $this->resetModel();
             return false;
         }
-
         return true;
     }
 
@@ -67,14 +65,12 @@ class RoleRepository extends EloquentBaseRepository implements RoleRepositoryCon
     public function createRole(array $data, array $permissions = [])
     {
         $roleId = $this->create($data);
-
         /**
          * Sync permissions
          */
         if ($permissions) {
             $this->syncPermissions($roleId, $permissions);
         }
-
         return $roleId;
     }
 
@@ -87,14 +83,12 @@ class RoleRepository extends EloquentBaseRepository implements RoleRepositoryCon
     public function updateRole($id, array $data, array $permissions = [])
     {
         $roleId = $this->update($id, $data);
-
         /**
          * Sync permissions
          */
         if ($roleId) {
             $this->syncPermissions($roleId, $permissions);
         }
-
         return $roleId;
     }
 
@@ -109,11 +103,9 @@ class RoleRepository extends EloquentBaseRepository implements RoleRepositoryCon
         } else {
             $item = $this->find($id);
         }
-
         if (!$item) {
             return [];
         }
-
         return $item->permissions()->allRelatedIds()->toArray();
     }
 }

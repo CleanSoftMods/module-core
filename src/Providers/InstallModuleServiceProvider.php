@@ -278,14 +278,13 @@ class InstallModuleServiceProvider extends ServiceProvider
         acl_permission()
             ->registerPermission('Access to dashboard', 'access-dashboard', $this->module)
             ->registerPermission('System commands', 'use-system-commands', $this->module);
-
-            ->registerPermission('View roles', 'view-roles', $this->module)
+        ->
+        registerPermission('View roles', 'view-roles', $this->module)
             ->registerPermission('Create roles', 'create-roles', $this->module)
             ->registerPermission('Edit roles', 'edit-roles', $this->module)
             ->registerPermission('Delete roles', 'delete-roles', $this->module)
             ->registerPermission('View permissions', 'view-permissions', $this->module)
             ->registerPermission('Assign roles', 'assign-roles', $this->module);
-
 
     }
 }

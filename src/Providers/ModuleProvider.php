@@ -19,11 +19,8 @@ class ModuleProvider extends ServiceProvider
     {
         //Load helpers
         Helper::loadModuleHelpers(__DIR__);
-
         //Load helpers
         //load_module_helpers(__DIR__);
-
-
         $this->app->singleton(ExceptionHandler::class, Handler::class);
         //Register related facades
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
@@ -62,7 +59,7 @@ class ModuleProvider extends ServiceProvider
          */
         $this->app->register(\CleanSoft\Modules\Core\Shortcode\Providers\ModuleProvider::class);
         $this->app->register(\CleanSoft\Modules\Core\Caching\Providers\ModuleProvider::class);
-        //$this->app->register(\CleanSoft\Modules\Core\ACL\Providers\ModuleProvider::class);
+        //$this->app->register(\CleanSoft\Modules\Core\Providers\ModuleProvider::class);
         $this->app->register(\CleanSoft\Modules\Core\ModulesManagement\Providers\ModuleProvider::class);
         $this->app->register(\CleanSoft\Modules\Core\AssetsManagement\Providers\ModuleProvider::class);
         $this->app->register(\CleanSoft\Modules\Core\Hook\Providers\ModuleProvider::class);

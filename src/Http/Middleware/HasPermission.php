@@ -1,6 +1,6 @@
-<?php namespace WebEd\Base\ACL\Http\Middleware;
+<?php namespace CleanSoft\Modules\Core\Http\Middleware;
 
-use \Closure;
+use Closure;
 
 class HasPermission
 {
@@ -22,7 +22,6 @@ class HasPermission
         if (!$request->user() || !$request->user()->hasPermission($permissions)) {
             abort(\Constants::FORBIDDEN_CODE);
         }
-
         return $next($request);
     }
 }

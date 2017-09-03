@@ -1,11 +1,11 @@
 <?php namespace CleanSoft\Modules\Core\Repositories\Eloquent;
 
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Log;
 use CleanSoft\Modules\Core\Models\Contracts\BaseModelContract;
 use CleanSoft\Modules\Core\Models\EloquentBase;
 use CleanSoft\Modules\Core\Repositories\AbstractBaseRepository;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Log;
 
 /**
  * @property BaseModelContract|EloquentBase|Builder $model

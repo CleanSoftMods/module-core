@@ -1,5 +1,4 @@
-<?php namespace WebEd\Base\ACL\Models\Contracts;
-
+<?php namespace CleanSoft\Modules\Core\Models\Contracts;
 interface RoleModelContract
 {
     /**

@@ -1,11 +1,11 @@
 <?php namespace CleanSoft\Modules\Core\Console\Commands;
 
-use CleanSoft\Modules\Core\ACL\Models\Role;
-use CleanSoft\Modules\Core\ACL\Repositories\Contracts\RoleRepositoryContract;
-use CleanSoft\Modules\Core\ACL\Repositories\RoleRepository;
+use CleanSoft\Modules\Core\Models\Role;
 use CleanSoft\Modules\Core\ModulesManagement\Repositories\Contracts\CoreModulesRepositoryContract;
 use CleanSoft\Modules\Core\ModulesManagement\Repositories\CoreModulesRepository;
 use CleanSoft\Modules\Core\Providers\InstallModuleServiceProvider;
+use CleanSoft\Modules\Core\Repositories\Contracts\RoleRepositoryContract;
+use CleanSoft\Modules\Core\Repositories\RoleRepository;
 use CleanSoft\Modules\Core\Users\Repositories\Contracts\UserRepositoryContract;
 use CleanSoft\Modules\Core\Users\Repositories\UserRepository;
 use Illuminate\Console\Command;

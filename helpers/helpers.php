@@ -1,7 +1,5 @@
 <?php
-use CleanSoft\Modules\Core\ACL\Repositories\Contracts\PermissionRepositoryContract;
-
-
+use CleanSoft\Modules\Core\Repositories\Contracts\PermissionRepositoryContract;
 
 if (!function_exists('admin_bar')) {
     /**
@@ -12,7 +10,6 @@ if (!function_exists('admin_bar')) {
         return \CleanSoft\Modules\Core\Facades\AdminBarFacade::getFacadeRoot();
     }
 }
-
 if (!function_exists('system_bar')) {
     /**
      * @return \CleanSoft\Modules\Core\Support\SystemBar
@@ -22,8 +19,6 @@ if (!function_exists('system_bar')) {
         return \CleanSoft\Modules\Core\Facades\SystemBarFacade::getFacadeRoot();
     }
 }
-
-
 if (!function_exists('email_bar')) {
     /**
      * @return \CleanSoft\Modules\Core\Support\EmailBar
@@ -33,10 +28,6 @@ if (!function_exists('email_bar')) {
         return \CleanSoft\Modules\Core\Facades\EmailBarFacade::getFacadeRoot();
     }
 }
-
-
-
-
 if (!function_exists('dashboard_menu')) {
     /**
      * @return \CleanSoft\Modules\Core\Menu\Support\DashboardMenu
@@ -173,34 +164,29 @@ if (!function_exists('limit_chars')) {
         return mb_substr($string, 0, $limit) . $append;
     }
 }
-
-
-
 if (!function_exists('check_user_acl')) {
     /**
-     * @return \WebEd\Base\ACL\Support\CheckUserACL
+     * @return \CleanSoft\Modules\Core\Support\CheckUserACL
      */
     function check_user_acl()
     {
-        return \WebEd\Base\ACL\Facades\CheckUserACLFacade::getFacadeRoot();
+        return \CleanSoft\Modules\Core\Facades\CheckUserACLFacade::getFacadeRoot();
     }
 }
-
 if (!function_exists('acl_permission')) {
     /**
      * Get the PermissionRepository instance.
      *
-     * @return \WebEd\Base\ACL\Repositories\PermissionRepository
+     * @return \CleanSoft\Modules\Core\Repositories\PermissionRepository
      */
     function acl_permission()
     {
         return app(PermissionRepositoryContract::class);
     }
 }
-
 if (!function_exists('has_permissions')) {
     /**
-     * @param \WebEd\Base\Users\Models\User $user
+     * @param \CleanSoft\Modules\Core\Users\Models\User $user
      * @param array $permissions
      * @return bool
      */
@@ -209,22 +195,19 @@ if (!function_exists('has_permissions')) {
         if (!$user) {
             return false;
         }
-
         if (!$permissions) {
             return true;
         }
-
         /**
-         * @var \WebEd\Base\Users\Repositories\UserRepository $userRepo
+         * @var \CleanSoft\Modules\Core\Users\Repositories\UserRepository $userRepo
          */
-        $userRepo = app(\WebEd\Base\Users\Repositories\Contracts\UserRepositoryContract::class);
+        $userRepo = app(\CleanSoft\Modules\Core\Users\Repositories\Contracts\UserRepositoryContract::class);
         return $userRepo->hasPermission($user, $permissions);
     }
 }
-
 if (!function_exists('has_roles')) {
     /**
-     * @param \WebEd\Base\Users\Models\User $user
+     * @param \CleanSoft\Modules\Core\Users\Models\User $user
      * @param array $roles
      * @return bool
      */
@@ -233,15 +216,13 @@ if (!function_exists('has_roles')) {
         if (!$user) {
             return false;
         }
-
         if (!$roles) {
             return true;
         }
-
         /**
-         * @var \WebEd\Base\Users\Repositories\UserRepository $userRepo
+         * @var \CleanSoft\Modules\Core\Users\Repositories\UserRepository $userRepo
          */
-        $userRepo = app(\WebEd\Base\Users\Repositories\Contracts\UserRepositoryContract::class);
+        $userRepo = app(\CleanSoft\Modules\Core\Users\Repositories\Contracts\UserRepositoryContract::class);
         return $userRepo->hasRole($user, $roles);
     }
 }

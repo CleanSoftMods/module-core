@@ -67,15 +67,11 @@ class BootstrapModuleServiceProvider extends ServiceProvider
             'link' => route('admin::settings.index.get'),
             'css_class' => null,
         ]);
-
-
         admin_quick_link()->register('role', [
             'title' => trans('webed-acl::base.role'),
             'url' => route('admin::acl-roles.create.get'),
             'icon' => 'icon-lock',
         ]);
-
-
         cms_settings()
             ->addSettingField('site_title', [
                 'group' => 'basic',

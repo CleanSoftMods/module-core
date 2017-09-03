@@ -19,9 +19,7 @@ Route::group(['prefix' => $adminRoute], function (Router $router) use ($adminRou
         ->name('admin::system.commands.update-cms.get')
         ->middleware('has-permission:use-system-commands');
 });
-
 $moduleRoute = 'acl';
-
 /**
  * Admin routes
  */
@@ -36,33 +34,25 @@ Route::group(['prefix' => $adminRoute . '/' . $moduleRoute], function (Router $r
         $router->get('', 'RoleController@getIndex')
             ->name('admin::acl-roles.index.get')
             ->middleware('has-permission:view-roles');
-
         $router->post('', 'RoleController@postListing')
             ->name('admin::acl-roles.index.post')
             ->middleware('has-permission:view-roles');
-
         $router->get('create', 'RoleController@getCreate')
             ->name('admin::acl-roles.create.get')
             ->middleware('has-permission:create-roles');
-
         $router->post('create', 'RoleController@postCreate')
             ->name('admin::acl-roles.create.post')
             ->middleware('has-permission:create-roles');
-
         $router->get('edit/{id}', 'RoleController@getEdit')
             ->name('admin::acl-roles.edit.get')
             ->middleware('has-permission:view-roles');
-
         $router->post('edit/{id}', 'RoleController@postEdit')
             ->name('admin::acl-roles.edit.post')
             ->middleware('has-permission:edit-roles');
-
         $router->delete('{id}', 'RoleController@deleteDelete')
             ->name('admin::acl-roles.delete.delete')
             ->middleware('has-permission:delete-roles');
     });
-
-
     /**
      * Permissions
      */
@@ -70,7 +60,6 @@ Route::group(['prefix' => $adminRoute . '/' . $moduleRoute], function (Router $r
         $router->get('', 'PermissionController@getIndex')
             ->name('admin::acl-permissions.index.get')
             ->middleware('has-permission:view-permissions');
-
         $router->post('', 'PermissionController@postListing')
             ->name('admin::acl-permissions.index.post')
             ->middleware('has-permission:view-permissions');
