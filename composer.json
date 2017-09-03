@@ -33,7 +33,7 @@
     },
     {
       "type": "vcs",
-      "url": "https://github.com/cleansoftmods/theme-adminlte.git"
+      "url": "https://github.com/cleansoftmods/helloworld.git"
     }
   ],
   "require": {
@@ -42,7 +42,7 @@
     "laravelcollective/html": "5.4.*",
     "maatwebsite/excel": "~2.1.0",
     "yajra/laravel-datatables-oracle": "^7.0",
-    "cysha/theme-adminlte": "dev-master",
+    "cleansoftmods/helloworld": "dev-master",
     "sgsoft-studio/caching": "4.0.x-dev",
     "sgsoft-studio/elfinder": "4.0.x-dev",
     "sgsoft-studio/hook": "4.0.x-dev",
