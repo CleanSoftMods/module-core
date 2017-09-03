@@ -35,7 +35,7 @@
         "laravelcollective/html": "5.4.*",
         "yajra/laravel-datatables-oracle": "^7.0",
         "cleansoftmods/acl": "dev-master",
-        "sgsoft-studio/assets-management": "de",
+        "sgsoft-studio/assets-management": "4.0.*",
         "sgsoft-studio/caching": "4.0.*",
         "sgsoft-studio/elfinder": "4.0.*",
         "sgsoft-studio/hook": "4.0.*",
