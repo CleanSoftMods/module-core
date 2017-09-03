@@ -1,12 +1,12 @@
-<?php namespace WebEd\Base\Providers;
+<?php namespace CleanSoft\Modules\Core\Providers;
 
 use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use WebEd\Base\Exceptions\Handler;
-use WebEd\Base\Facades\SeoFacade;
-use WebEd\Base\Http\Middleware\StartSessionMiddleware;
-use WebEd\Base\Support\Helper;
+use CleanSoft\Modules\Core\Exceptions\Handler;
+use CleanSoft\Modules\Core\Facades\SeoFacade;
+use CleanSoft\Modules\Core\Http\Middleware\StartSessionMiddleware;
+use CleanSoft\Modules\Core\Support\Helper;
 
 class ModuleProvider extends ServiceProvider
 {
