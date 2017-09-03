@@ -32,7 +32,6 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
         }
         $this->builderModel = $this->model;
         $this->builder['where'][] = func_get_args();
-
         return $this;
     }
 
@@ -52,7 +51,6 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
         }
         $this->builderModel = $this->model;
         $this->builder['orderBy'][] = func_get_args();
-
         return $this;
     }
 
@@ -91,7 +89,6 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
         $this->model = $this->model->take($howManyItem);
         $this->builderModel = $this->model;
         $this->builder['take'] = func_get_args();
-
         return $this;
     }
 
@@ -104,7 +101,6 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
         if (!is_array($columns)) {
             $columns = func_get_args();
         }
-
         $this->applyCriteria();
         $this->builderModel = $this->model;
         $result = $this->model->get($columns);
@@ -223,14 +219,12 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
                 $item = $this->findOrNew($id);
             }
         }
-
         /**
          * Unset some data that not changed
          */
         if ($item->{$item->getPrimaryKey()}) {
             $this->unsetNotChangedData($item, $data);
         }
-
         /**
          * Unset not editable fields
          */
@@ -240,39 +234,32 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
         } else {
             $cannotEdit = [];
         }
-
         /**
          * Nothing to update
          */
         if (!$data) {
             return response_with_messages(array_merge(['Request completed'], $cannotEdit), false, \Constants::SUCCESS_NO_CONTENT_CODE, $item);
         }
-
         /**
          * Validate model
          */
         $validate = $this->validateModel($data, $justUpdateSomeFields);
-
         /**
          * Do not passed validate
          */
         if (!$validate) {
             return response_with_messages(array_merge($this->getRuleErrorMessages(), $cannotEdit), true, \Constants::ERROR_CODE);
         }
-
         $primaryKey = $this->getPrimaryKey();
-
         /**
          * Prevent edit the primary key
          */
         if (isset($data[$primaryKey])) {
             unset($data[$primaryKey]);
         }
-
         foreach ($data as $key => $row) {
             $item->$key = $row;
         }
-
         try {
             $item->save();
         } catch (\Exception $exception) {
@@ -301,14 +288,11 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
         } else {
             $cannotEdit = [];
         }
-
         $validate = $this->validateModel($data, $justUpdateSomeFields);
         if (!$validate) {
             return response_with_messages(array_merge($this->getRuleErrorMessages(), $cannotEdit), true, \Constants::ERROR_CODE);
         }
-
         $items = $this->model->whereIn('id', $ids);
-
         try {
             $items->update($data);
         } catch (\Exception $exception) {
@@ -337,14 +321,11 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
         } else {
             $cannotEdit = [];
         }
-
         $validate = $this->validateModel($data, $justUpdateSomeFields);
         if (!$validate) {
             return response_with_messages(array_merge($this->getRuleErrorMessages(), $cannotEdit), true, \Constants::ERROR_CODE);
         }
-
         $this->applyCriteria();
-
         try {
             $this->model->update($data);
         } catch (\Exception $exception) {
@@ -373,7 +354,6 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
         } else {
             $this->applyCriteria();
         }
-
         try {
             $this->model->delete();
         } catch (\Exception $exception) {

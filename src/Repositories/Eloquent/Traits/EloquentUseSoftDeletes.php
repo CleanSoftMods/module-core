@@ -53,7 +53,6 @@ trait EloquentUseSoftDeletes
         } else {
             $this->applyCriteria();
         }
-
         try {
             $this->model->restore();
         } catch (\Exception $exception) {
@@ -82,7 +81,6 @@ trait EloquentUseSoftDeletes
         } else {
             $this->applyCriteria();
         }
-
         try {
             $this->model->forceDelete();
         } catch (\Exception $exception) {

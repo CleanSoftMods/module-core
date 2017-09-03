@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists('module_version_compare')) {
     /**
      * @param $currentVersion
@@ -24,11 +23,9 @@ if (!function_exists('module_version_compare')) {
             default:
                 $operator = '==';
         }
-
         return version_compare($currentVersion, $condition, $operator);
     }
 }
-
 if (!function_exists('module_version_compare_with_message')) {
     /**
      * @param array $module
@@ -51,16 +48,13 @@ if (!function_exists('module_version_compare_with_message')) {
             default:
                 $message = 'The module ' . array_get($module, 'alias') . ' version must equal to ' . $where;
         }
-
         $result = module_version_compare(array_get($module, 'installed_version', '0'), $condition);
-
         if (!$result) {
             return response_with_messages($message, true, Constants::ERROR_CODE);
         }
         return response_with_messages('Module version OK', false, Constants::SUCCESS_NO_CONTENT_CODE);
     }
 }
-
 if (!function_exists('check_module_require')) {
     /**
      * @param array $moduleNeedToCheck
@@ -78,7 +72,6 @@ if (!function_exists('check_module_require')) {
                 $error = true;
                 continue;
             }
-
             $moduleVersionCompare = module_version_compare_with_message($module, $version);
             if ($moduleVersionCompare['error']) {
                 $messages = array_merge($moduleVersionCompare['messages'], $messages);

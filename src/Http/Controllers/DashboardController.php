@@ -1,5 +1,4 @@
 <?php namespace WebEd\Base\Core\Http\Controllers;
-
 class DashboardController extends BaseAdminController
 {
     protected $module = 'webed-core';
@@ -7,7 +6,6 @@ class DashboardController extends BaseAdminController
     public function __construct()
     {
         parent::__construct();
-
         $this->getDashboardMenu('webed-dashboard');
     }
 

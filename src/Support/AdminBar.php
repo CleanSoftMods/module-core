@@ -1,5 +1,4 @@
 <?php namespace WebEd\Base\Core\Support;
-
 class AdminBar
 {
     /**
@@ -10,14 +9,12 @@ class AdminBar
             'link' => 'javascript:;',
             'title' => 'Appearance',
             'items' => [
-
             ],
         ],
         'add-new' => [
             'link' => 'javascript:;',
             'title' => 'Add new',
             'items' => [
-
             ],
         ],
     ];
@@ -33,7 +30,6 @@ class AdminBar
             'Menus' => route('admin::menus.index.get'),
             'Settings' => route('admin::settings.index.get'),
         ];
-
         $this->groups['add-new']['items'] = [
             'User' => route('admin::users.create.get'),
         ];
@@ -67,7 +63,6 @@ class AdminBar
             'title' => $title,
             'link' => $link,
             'items' => [
-
             ],
         ];
         return $this;

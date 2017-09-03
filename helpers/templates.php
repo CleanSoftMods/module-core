@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists('get_templates')) {
     /**
      * @param string $type
@@ -14,7 +13,6 @@ if (!function_exists('get_templates')) {
         return $templates;
     }
 }
-
 if (!function_exists('add_new_template')) {
     /**
      * @param array $template

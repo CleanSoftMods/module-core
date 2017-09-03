@@ -31,6 +31,7 @@
       content="{{ (isset($object) && isset($object->created_at)) ? $object->created_at->toDatetimeString() : date('Y-m-d H:i:s') }}"/>
 <meta property="article:modified_time"
       content="{{ (isset($object) && isset($object->updated_at)) ? $object->updated_at->toDatetimeString() : date('Y-m-d H:i:s') }}"/>
-<meta property="article:section" content="{{ $pageTitle or '' }} - {{ get_settings('site_title', 'WebEd') ?: 'WebEd' }}"/>
+<meta property="article:section"
+      content="{{ $pageTitle or '' }} - {{ get_settings('site_title', 'WebEd') ?: 'WebEd' }}"/>
 <meta property="article:tag" content="{{ array_get($seoMeta, 'keywords') }}"/>
 <meta property="fb:admins" content=""/>

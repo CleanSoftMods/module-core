@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists('breadcrumbs')) {
     /**
      * @return \WebEd\Base\Core\Support\Breadcrumbs

@@ -1,10 +1,10 @@
 <?php namespace WebEd\Base\Core\Repositories\Contracts;
 
-use WebEd\Base\Core\Models\Contracts\BaseModelContract;
-use Illuminate\Support\Collection;
-use WebEd\Base\Core\Exceptions\Repositories\WrongCriteria;
-use WebEd\Base\Core\Criterias\Contracts\CriteriaContract;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
+use WebEd\Base\Core\Criterias\Contracts\CriteriaContract;
+use WebEd\Base\Core\Exceptions\Repositories\WrongCriteria;
+use WebEd\Base\Core\Models\Contracts\BaseModelContract;
 
 interface AbstractRepositoryContract
 {

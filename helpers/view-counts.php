@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists('view_count')) {
     /**
      * @return \WebEd\Base\Core\Support\ViewCount
@@ -9,7 +8,6 @@ if (!function_exists('view_count')) {
         return \ViewCount::getFacadeRoot();
     }
 }
-
 if (!function_exists('increase_view_count')) {
     /**
      * @param $entity

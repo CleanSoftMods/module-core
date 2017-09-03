@@ -1,6 +1,6 @@
 <?php namespace WebEd\Base\Core\Http\Middleware;
 
-use \Closure;
+use Closure;
 use Illuminate\Http\Request;
 
 class CorsMiddleware

@@ -1,6 +1,6 @@
 <?php namespace WebEd\Base\Core\Support;
-
-class SEO {
+class SEO
+{
     /**
      * @var array
      */

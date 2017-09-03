@@ -151,7 +151,6 @@ abstract class AbstractBaseRepository implements AbstractRepositoryContract, Rep
         if (is_object($className)) {
             $className = get_class($criteria);
         }
-
         if (isset($this->criteria[$className])) {
             unset($this->criteria[$className]);
         }
@@ -188,9 +187,7 @@ abstract class AbstractBaseRepository implements AbstractRepositoryContract, Rep
         if ($this->select) {
             $this->model = $this->model->select($this->select);
         }
-
         $this->builderModel = $this->model;
-
         return $this;
     }
 
@@ -206,7 +203,6 @@ abstract class AbstractBaseRepository implements AbstractRepositoryContract, Rep
         if (!$criteria instanceof CriteriaContract) {
             throw new WrongCriteria('Class ' . get_class($criteria) . ' must be an instance of ' . CriteriaContract::class);
         }
-
         return $criteria->apply($this->originalModel, $this, $crossData);
     }
 

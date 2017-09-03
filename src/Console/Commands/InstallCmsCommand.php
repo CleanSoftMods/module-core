@@ -54,9 +54,7 @@ class InstallCmsCommand extends Command
     public function __construct(Filesystem $filesystem)
     {
         parent::__construct();
-
         $this->files = $filesystem;
-
         $this->app = app();
     }
 
@@ -66,25 +64,21 @@ class InstallCmsCommand extends Command
     public function handle()
     {
         $this->createEnv();
-
         $this->getDatabaseInformation();
         /**
          * Migrate tables
          */
         $this->line('Migrate database...');
         \Artisan::call('migrate');
-
         $this->line('Create super admin role...');
         $this->createSuperAdminRole();
         $this->line('Create admin user...');
         $this->createAdminUser();
         $this->line('Install module dependencies...');
         $this->registerInstallModuleService();
-
         session()->flush();
         session()->regenerate();
         \Artisan::call('cache:clear');
-
         $this->info("\nWebEd installed. Current version is " . config('webed.version'));
     }
 
@@ -99,12 +93,10 @@ class InstallCmsCommand extends Command
         $this->dbInfo['username'] = env('DB_USERNAME');
         $this->dbInfo['password'] = env('DB_PASSWORD');
         $this->dbInfo['port'] = env('DB_PORT');
-
         if (!check_db_connection()) {
             $this->error('Please setup your database information first!');
             die();
         }
-
         $this->info('Database OK...');
     }
 
@@ -116,11 +108,9 @@ class InstallCmsCommand extends Command
             $this->info('Role already exists...');
             return;
         }
-
         $role = new Role();
         $role->name = 'Super Admin';
         $role->slug = 'super-admin';
-
         try {
             $role->save();
             $this->info('Role created successfully...');
@@ -139,14 +129,12 @@ class InstallCmsCommand extends Command
         $user->display_name = $this->ask('Your display name', 'Super Admin');
         $user->first_name = $this->ask('Your first name', 'Admin');
         $user->last_name = $this->ask('Your last_name', false);
-
         try {
             $user->save();
             $this->info('User created successfully...');
         } catch (\Exception $exception) {
             $this->error('Error occurred when create user...');
         }
-
         /**
          * Assign this user to super admin
          */

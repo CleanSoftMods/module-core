@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists('response_with_messages')) {
     /**
      * @param string|array $messages
@@ -18,7 +17,6 @@ if (!function_exists('response_with_messages')) {
         ];
     }
 }
-
 if (!function_exists('flash_messages')) {
     /**
      * @return \WebEd\Base\Core\Services\FlashMessages

@@ -18,20 +18,9 @@ class BootstrapModuleServiceProvider extends ServiceProvider
         });
     }
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-
-    }
-
     private function booted()
     {
         $this->registerMenu();
-
         $this->generalSettings();
         $this->socialNetworks();
     }
@@ -51,7 +40,6 @@ class BootstrapModuleServiceProvider extends ServiceProvider
             'link' => route('admin::dashboard.index.get'),
             'css_class' => null,
         ]);
-
         \DashboardMenu::registerItem([
             'id' => 'webed-configuration',
             'priority' => 999,
@@ -131,7 +119,6 @@ class BootstrapModuleServiceProvider extends ServiceProvider
     private function socialNetworks()
     {
         cms_settings()->addGroup('socials', 'Social networks');
-
         $socials = [
             'facebook' => [
                 'label' => 'Facebook page',
@@ -162,5 +149,15 @@ class BootstrapModuleServiceProvider extends ServiceProvider
                 ];
             });
         }
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+
     }
 }

@@ -1,7 +1,7 @@
 <?php namespace WebEd\Base\Core\Http\Controllers;
 
-use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 abstract class BaseController extends Controller
 {
@@ -9,27 +9,23 @@ abstract class BaseController extends Controller
      * @var Request
      */
     public $request;
-
-    /**
-     * @var \WebEd\Base\Core\Repositories\EloquentBaseRepository
-     */
-    protected $repository;
-
     /**
      * @var string
      */
     public $adminRoute;
-
     /**
      * Specify all variables will be passed to view
      * @var array
      */
     public $dis = [];
+    /**
+     * @var \WebEd\Base\Core\Repositories\EloquentBaseRepository
+     */
+    protected $repository;
 
     public function __construct()
     {
         $this->request = request();
-
         $this->adminRoute = config('webed.admin_route');
     }
 
@@ -67,7 +63,7 @@ abstract class BaseController extends Controller
         if ($data === null) {
             $data = $this->dis;
         }
-        if(property_exists($this, 'module')) {
+        if (property_exists($this, 'module')) {
             return view($this->module . '::' . $viewName, $data);
         }
         return view($viewName, $data);

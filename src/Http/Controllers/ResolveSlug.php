@@ -1,5 +1,4 @@
 <?php
-
 namespace WebEd\Base\Core\Http\Controllers;
 
 use Illuminate\Routing\Controller;

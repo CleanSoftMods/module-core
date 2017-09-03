@@ -13,11 +13,11 @@
 @endsection
 
 @section('content')
-    <div class="layout-1columns">
-        <div class="column main">
-            <h2 class="headline">404</h2>
-            <h3>Page not found.</h3>
-            <p>We could not find the page you were looking for.</p>
-        </div>
+  <div class="layout-1columns">
+    <div class="column main">
+      <h2 class="headline">404</h2>
+      <h3>Page not found.</h3>
+      <p>We could not find the page you were looking for.</p>
     </div>
+  </div>
 @endsection

@@ -18,6 +18,13 @@ class InstallModuleServiceProvider extends ServiceProvider
         });
     }
 
+    private function booted()
+    {
+        acl_permission()
+            ->registerPermission('Access to dashboard', 'access-dashboard', $this->module)
+            ->registerPermission('System commands', 'use-system-commands', $this->module);
+    }
+
     /**
      * Register any application services.
      *
@@ -26,12 +33,5 @@ class InstallModuleServiceProvider extends ServiceProvider
     public function register()
     {
 
-    }
-
-    private function booted()
-    {
-        acl_permission()
-            ->registerPermission('Access to dashboard', 'access-dashboard', $this->module)
-            ->registerPermission('System commands', 'use-system-commands', $this->module);
     }
 }

@@ -1,8 +1,8 @@
 {
-    "alias": "cleansoft-core",
-    "name": "CleanSoft core",
-    "author": "",
-    "description": "CleanSoft base core",
-    "namespace": "WebEd\\Base\\Core",
-    "autoload": "psr-4"
+  "alias": "cleansoft-core",
+  "name": "CleanSoft core",
+  "author": "",
+  "description": "CleanSoft base core",
+  "namespace": "WebEd\\Base\\Core",
+  "autoload": "psr-4"
 }

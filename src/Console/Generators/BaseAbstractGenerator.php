@@ -1,8 +1,8 @@
 <?php namespace WebEd\Base\Core\Console\Generators;
 
 use Illuminate\Console\Command;
-use Illuminate\Support\Str;
 use Illuminate\Filesystem\Filesystem;
+use Illuminate\Support\Str;
 use Symfony\Component\Console\Input\InputArgument;
 
 abstract class BaseAbstractGenerator extends Command
@@ -24,13 +24,12 @@ abstract class BaseAbstractGenerator extends Command
     /**
      * Create a new controller creator command instance.
      *
-     * @param  \Illuminate\Filesystem\Filesystem  $files
+     * @param  \Illuminate\Filesystem\Filesystem $files
      * @return void
      */
     public function __construct(Filesystem $files)
     {
         parent::__construct();
-
         $this->files = $files;
     }
 
@@ -49,73 +48,62 @@ abstract class BaseAbstractGenerator extends Command
     public function fire()
     {
         $name = $this->parseName($this->getNameInput());
-
         $path = $this->getPath($name);
-
         if ($this->alreadyExists($this->getNameInput())) {
-            $this->error($this->type.' already exists!');
-
+            $this->error($this->type . ' already exists!');
             return false;
         }
-
         $this->makeDirectory($path);
-
         $this->files->put($path, $this->buildClass($name));
-
-        $this->info($this->type.' created successfully.');
+        $this->info($this->type . ' created successfully.');
     }
 
     /**
      * Determine if the class already exists.
      *
-     * @param  string  $rawName
+     * @param  string $rawName
      * @return bool
      */
     protected function alreadyExists($rawName)
     {
         $name = $this->parseName($rawName);
-
         return $this->files->exists($this->getPath($name));
     }
 
     /**
      * Get the destination class path.
      *
-     * @param  string  $name
+     * @param  string $name
      * @return string
      */
     protected function getPath($name)
     {
         $name = str_replace_first($this->laravel->getNamespace(), '', $name);
-
-        return $this->laravel['path'].'/'.str_replace('\\', '/', $name).'.php';
+        return $this->laravel['path'] . '/' . str_replace('\\', '/', $name) . '.php';
     }
 
     /**
      * Parse the name and format according to the root namespace.
      *
-     * @param  string  $name
+     * @param  string $name
      * @return string
      */
     protected function parseName($name)
     {
         $rootNamespace = $this->laravel->getNamespace();
-
         if (Str::startsWith($name, $rootNamespace)) {
             return $name;
         }
-
         if (Str::contains($name, '/')) {
             $name = str_replace('/', '\\', $name);
         }
-
-        return $this->parseName($this->getDefaultNamespace(trim($rootNamespace, '\\')).'\\'.$name);
+        return $this->parseName($this->getDefaultNamespace(trim($rootNamespace, '\\')) . '\\' . $name);
     }
 
     /**
      * Get the default namespace for the class.
      *
-     * @param  string  $rootNamespace
+     * @param  string $rootNamespace
      * @return string
      */
     protected function getDefaultNamespace($rootNamespace)
@@ -126,12 +114,12 @@ abstract class BaseAbstractGenerator extends Command
     /**
      * Build the directory for the class if necessary.
      *
-     * @param  string  $path
+     * @param  string $path
      * @return string
      */
     protected function makeDirectory($path)
     {
-        if (! $this->files->isDirectory(dirname($path))) {
+        if (!$this->files->isDirectory(dirname($path))) {
             $this->files->makeDirectory(dirname($path), 0777, true, true);
         }
     }
@@ -139,21 +127,20 @@ abstract class BaseAbstractGenerator extends Command
     /**
      * Build the class with the given name.
      *
-     * @param  string  $name
+     * @param  string $name
      * @return string
      */
     protected function buildClass($name)
     {
         $stub = $this->files->get($this->getStub());
-
         return $this->replaceNamespace($stub, $name)->replaceClass($stub, $name);
     }
 
     /**
      * Replace the namespace for the given stub.
      *
-     * @param  string  $stub
-     * @param  string  $name
+     * @param  string $stub
+     * @param  string $name
      * @return $this
      */
     protected function replaceNamespace(&$stub, $name)
@@ -161,18 +148,16 @@ abstract class BaseAbstractGenerator extends Command
         $stub = str_replace(
             'DummyNamespace', $this->getNamespace($name), $stub
         );
-
         $stub = str_replace(
             'DummyRootNamespace', $this->laravel->getNamespace(), $stub
         );
-
         return $this;
     }
 
     /**
      * Get the full namespace name for a given class.
      *
-     * @param  string  $name
+     * @param  string $name
      * @return string
      */
     protected function getNamespace($name)
@@ -183,14 +168,13 @@ abstract class BaseAbstractGenerator extends Command
     /**
      * Replace the class name for the given stub.
      *
-     * @param  string  $stub
-     * @param  string  $name
+     * @param  string $stub
+     * @param  string $name
      * @return string
      */
     protected function replaceClass($stub, $name)
     {
-        $class = str_replace($this->getNamespace($name).'\\', '', $name);
-
+        $class = str_replace($this->getNamespace($name) . '\\', '', $name);
         return str_replace('DummyClass', $class, $stub);
     }
 

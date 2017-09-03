@@ -1,5 +1,4 @@
 <?php namespace WebEd\Base\Core\Support;
-
 class Breadcrumbs
 {
 
@@ -36,7 +35,6 @@ class Breadcrumbs
     public function addLink($title, $link = null, $icon = null)
     {
         $this->links[] = $this->templateLink($title, $link, $icon);
-
         return $this;
     }
 
@@ -63,7 +61,6 @@ class Breadcrumbs
     public function setBreadcrumbClass($class)
     {
         $this->breadcrumbClass = $class;
-
         return $this;
     }
 
@@ -75,7 +72,6 @@ class Breadcrumbs
     public function setContainerTag($class)
     {
         $this->containerTag = $class;
-
         return $this;
     }
 
@@ -87,7 +83,6 @@ class Breadcrumbs
     public function setItemTag($class)
     {
         $this->itemTag = $class;
-
         return $this;
     }
 
@@ -102,7 +97,6 @@ class Breadcrumbs
             $htmlSrc .= '<' . $this->itemTag . '>' . $row . '</' . $this->itemTag . '>';
         }
         $htmlSrc .= '</' . $this->containerTag . '>';
-
         return $htmlSrc;
     }
 
@@ -116,7 +110,6 @@ class Breadcrumbs
         $this->breadcrumbClass = 'breadcrumbs';
         $this->containerTag = 'ul';
         $this->itemTag = 'li';
-
         return $this;
     }
 }

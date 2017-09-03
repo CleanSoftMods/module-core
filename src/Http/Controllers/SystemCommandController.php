@@ -1,5 +1,4 @@
 <?php namespace WebEd\Base\Core\Http\Controllers;
-
 class SystemCommandController extends BaseAdminController
 {
     protected $module = 'webed-core';
@@ -14,7 +13,6 @@ class SystemCommandController extends BaseAdminController
         $this->flashMessagesHelper
             ->addMessages('Composer autoload refreshed', 'success')
             ->showMessagesOnSession();
-
         return redirect()->back();
     }
 }

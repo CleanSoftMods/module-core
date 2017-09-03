@@ -1,8 +1,7 @@
 <?php
-
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateViewTrackersTable extends Migration
 {
@@ -20,7 +19,6 @@ class CreateViewTrackersTable extends Migration
             $table->string('entity')->index();
             $table->integer('entity_id')->unsigned()->index();
             $table->bigInteger('count')->unsigned()->default(0)->index();
-
             $table->unique(['entity', 'entity_id']);
         });
     }

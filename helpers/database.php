@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists('check_db_connection')) {
     /**
      * @return bool

@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists('get_cms_version')) {
     /**
      * @return string
@@ -15,7 +14,6 @@ if (!function_exists('get_cms_version')) {
         }
     }
 }
-
 if (!function_exists('load_module_helpers')) {
     /**
      * @param $dir
@@ -25,7 +23,6 @@ if (!function_exists('load_module_helpers')) {
         \WebEd\Base\Core\Support\Helper::loadModuleHelpers($dir);
     }
 }
-
 if (!function_exists('get_image')) {
     /**
      * @param $fields
@@ -39,7 +36,6 @@ if (!function_exists('get_image')) {
         return $image;
     }
 }
-
 if (!function_exists('convert_timestamp_format')) {
     /**
      * @param $dateTime
@@ -55,7 +51,6 @@ if (!function_exists('convert_timestamp_format')) {
         return $date->format($format);
     }
 }
-
 if (!function_exists('convert_unix_time_format')) {
     /**
      * @param $dateTime
@@ -71,7 +66,6 @@ if (!function_exists('convert_unix_time_format')) {
         }
     }
 }
-
 if (!function_exists('json_encode_prettify')) {
     /**
      * @param array $files
@@ -81,7 +75,6 @@ if (!function_exists('json_encode_prettify')) {
         return json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     }
 }
-
 if (!function_exists('is_in_dashboard')) {
     /**
      * @return bool
@@ -92,11 +85,9 @@ if (!function_exists('is_in_dashboard')) {
         if ($segment === config('webed.admin_route', 'admincp')) {
             return true;
         }
-
         return false;
     }
 }
-
 if (!function_exists('custom_strip_tags')) {
     /**
      * @param array|string $data
@@ -114,7 +105,6 @@ if (!function_exists('custom_strip_tags')) {
         return $data;
     }
 }
-
 if (!function_exists('limit_chars')) {
     /**
      * @param $string
@@ -138,12 +128,10 @@ if (!function_exists('limit_chars')) {
             if (mb_strlen($string) <= $limit) {
                 $append = '';
             }
-
             $string = mb_substr($string, 0, $limit);
             if (mb_substr($string, -1, 1) != ' ') {
                 $string = mb_substr($string, 0, mb_strrpos($string, ' '));
             }
-
             return $string . $append;
         }
         return mb_substr($string, 0, $limit) . $append;

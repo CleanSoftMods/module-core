@@ -34,11 +34,9 @@ abstract class BaseAdminController extends BaseController
     public function __construct()
     {
         parent::__construct();
-
         $this->breadcrumbs = \Breadcrumbs::setBreadcrumbClass('breadcrumb')
             ->setContainerTag('ol')
             ->addLink('WebEd', route('admin::dashboard.index.get'), '<i class="icon-home mr5"></i>');
-
         $this->middleware(function (Request $request, $next) {
             $this->loggedInUser = $request->user();
             view()->share([
@@ -47,9 +45,7 @@ abstract class BaseAdminController extends BaseController
             \DashboardMenu::setUser($this->loggedInUser);
             return $next($request);
         });
-
         $this->assets = assets_management()->getAssetsFrom('admin');
-
         $this->assets
             ->addStylesheetsDirectly([
                 'admin/theme/lte/css/AdminLTE.min.css',
@@ -62,9 +58,7 @@ abstract class BaseAdminController extends BaseController
                 'admin/theme/lte/js/demo.js',
                 'admin/js/script.js',
             ], 'bottom');
-
         $this->flashMessagesHelper = flash_messages();
-
         $this->userRepository = app(UserRepositoryContract::class);
     }
 

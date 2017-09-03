@@ -1,6 +1,6 @@
 <?php namespace WebEd\Base\Core\Http\Middleware;
 
-use \Closure;
+use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -31,7 +31,6 @@ class AdminBarMiddleware
                 $this->modifyResponse($request, $response);
             }
         }
-
         return $response;
     }
 
@@ -45,13 +44,10 @@ class AdminBarMiddleware
     public function modifyResponse(Request $request, Response $response)
     {
         $app = $this->app;
-
         if (is_in_dashboard() || $app->runningInConsole() || $this->isDebugbarRequest() || $request->ajax()) {
             return $response;
         }
-
         $this->injectAdminBar($response);
-
         return $response;
     }
 
@@ -72,9 +68,7 @@ class AdminBarMiddleware
     public function injectAdminBar(Response $response)
     {
         $content = $response->getContent();
-
         $this->injectHeadContent($content)->injectAdminBarHtml($content);
-
         // Update the new content and reset the content length
         $response->setContent($content);
         $response->headers->remove('Content-Length');

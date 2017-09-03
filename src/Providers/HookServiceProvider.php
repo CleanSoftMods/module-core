@@ -10,6 +10,7 @@ class HookServiceProvider extends ServiceProvider
      * @var Request
      */
     protected $request;
+
     /**
      * Bootstrap any application services.
      *
@@ -19,7 +20,6 @@ class HookServiceProvider extends ServiceProvider
     {
         app()->booted(function () {
             $this->request = request();
-
             $this->booted();
         });
     }
@@ -42,7 +42,7 @@ class HookServiceProvider extends ServiceProvider
     protected function booted()
     {
         add_filter('settings.before-edit.post', function ($data, SettingController $controller) {
-            if($controller->request->get('_tab') === 'advanced') {
+            if ($controller->request->get('_tab') === 'advanced') {
                 $data['construction_mode'] = (int)($this->request->has('construction_mode'));
                 $data['show_admin_bar'] = (int)($this->request->has('show_admin_bar'));
             }

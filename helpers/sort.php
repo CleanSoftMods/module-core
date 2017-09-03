@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists('sort_item_with_children')) {
     /**
      * Sort parents before children
@@ -18,7 +17,6 @@ if (!function_exists('sort_item_with_children')) {
             }
             $list = $listArr;
         }
-
         foreach ($list as $key => $object) {
             if ((int)$object->parent_id == (int)$parent) {
                 array_push($result, $object);

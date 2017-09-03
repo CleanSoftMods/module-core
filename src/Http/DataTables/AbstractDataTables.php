@@ -47,7 +47,6 @@ abstract class AbstractDataTables
             $this->fetch();
         }
         call_user_func_array([$this->fetch, $method], $params);
-
         return $this;
     }
 
@@ -67,7 +66,6 @@ abstract class AbstractDataTables
     protected function setDataTableSelector($selector)
     {
         $this->selector = $selector;
-
         return $this;
     }
 
@@ -79,7 +77,6 @@ abstract class AbstractDataTables
     protected function setAjaxUrl($url, $method = 'POST')
     {
         $this->ajaxUrl = [$url, $method];
-
         return $this;
     }
 
@@ -90,7 +87,6 @@ abstract class AbstractDataTables
     protected function setColumns(array $columns)
     {
         $this->columns = $columns;
-
         return $this;
     }
 
@@ -102,7 +98,6 @@ abstract class AbstractDataTables
     protected function addFilter($columnPosition, $htmlElement)
     {
         $this->filters[$columnPosition] = $htmlElement;
-
         return $this;
     }
 
@@ -115,7 +110,6 @@ abstract class AbstractDataTables
     protected function addHeading($name, $title, $width)
     {
         $this->headings[$name] = ['title' => $title, 'width' => $width];
-
         return $this;
     }
 
@@ -135,15 +129,12 @@ abstract class AbstractDataTables
         $groupActions = $this->groupActions;
         $selector = $this->selector;
         $ajaxUrl = $this->ajaxUrl;
-
         \Assets::addJavascripts('jquery-datatables');
-
         add_action('footer_js', function () use ($selector, $columns, $ajaxUrl) {
             echo view('webed-core::admin._components.datatables.script-renderer', compact(
                 'columns', 'selector', 'ajaxUrl'
             ))->render();
         });
-
         return view('webed-core::admin._components.datatables.table', compact(
             'filters', 'headings', 'groupActions'
         ))->render();
@@ -172,7 +163,6 @@ abstract class AbstractDataTables
     public function setDataTableData($engine)
     {
         $this->fetch = $engine;
-
         return $this;
     }
 
@@ -180,7 +170,6 @@ abstract class AbstractDataTables
      * @return string
      */
     abstract public function run();
-
 
     /**
      * @return $this

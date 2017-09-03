@@ -48,7 +48,7 @@ class BaseFrontController extends BaseController
         if ($data === null) {
             $data = $this->dis;
         }
-        if(view()->exists($this->currentThemeName . '::' . $viewName)) {
+        if (view()->exists($this->currentThemeName . '::' . $viewName)) {
             return view($this->currentThemeName . '::' . $viewName, $data);
         }
         return view($viewName, $data);

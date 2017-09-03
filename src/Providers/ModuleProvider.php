@@ -26,7 +26,6 @@ class ModuleProvider extends ServiceProvider
         $this->loadTranslationsFrom(__DIR__ . '/../../resources/lang', 'webed-core');
         /*Load migrations*/
         $this->loadMigrationsFrom(__DIR__ . '/../../database/migrations');
-
         $this->publishes([
             __DIR__ . '/../../resources/views' => config('view.paths')[0] . '/vendor/webed-core',
         ], 'views');
@@ -54,9 +53,7 @@ class ModuleProvider extends ServiceProvider
     {
         //Load helpers
         Helper::loadModuleHelpers(__DIR__);
-
         $this->app->singleton(ExceptionHandler::class, Handler::class);
-
         //Register related facades
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();
         $loader->alias('Breadcrumbs', BreadcrumbsFacade::class);
@@ -66,20 +63,16 @@ class ModuleProvider extends ServiceProvider
         $loader->alias('Form', \Collective\Html\FormFacade::class);
         $loader->alias('Html', \Collective\Html\HtmlFacade::class);
         $loader->alias('Seo', SeoFacade::class);
-
         //Merge configs
         $configs = split_files_with_basename($this->app['files']->glob(__DIR__ . '/../../config/*.php'));
-
         foreach ($configs as $key => $row) {
             $this->mergeConfigFrom($row, $key);
         }
-
         /**
          * Other packages
          */
         $this->app->register(\Yajra\Datatables\DatatablesServiceProvider::class);
         $this->app->register(\Collective\Html\HtmlServiceProvider::class);
-
         /**
          * Base providers
          */
@@ -92,7 +85,6 @@ class ModuleProvider extends ServiceProvider
         $this->app->register(RepositoryServiceProvider::class);
         $this->app->register(CollectiveServiceProvider::class);
         $this->app->register(BootstrapModuleServiceProvider::class);
-
         /**
          * Other module providers
          */
@@ -109,7 +101,6 @@ class ModuleProvider extends ServiceProvider
         $this->app->register(\WebEd\Base\ThemesManagement\Providers\ModuleProvider::class);
         $this->app->register(\WebEd\Base\Users\Providers\ModuleProvider::class);
         $this->app->register(\WebEd\Base\Pages\Providers\ModuleProvider::class);
-
         config(['webed.version' => get_cms_version()]);
     }
 }

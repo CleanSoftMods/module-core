@@ -1,60 +1,59 @@
 {
-    "name": "cleansoftmods/module-core",
-    "description": "CleanSoft core Module",
-    "license": "",
-    "homepage": "",
-    "support": {
-        "issues": "",
-        "source": ""
-    },
-    "authors": [
-        {
-            "name": "",
-            "email": ""
-        }
-    ],
-    "keywords": [],
-    "license": "MIT",
-    "type": "project",
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "optimize-autoloader": true
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/CleanSoftMods/core-acl.git"
-        }
-    ],
-    "require": {
-        "php": ">=5.6.4",
-        "doctrine/dbal": "^2.5",
-        "laravelcollective/html": "5.4.*",
-        "yajra/laravel-datatables-oracle": "^7.0",
-        "cleansoftmods/acl": "3.1.*",
-        "sgsoft-studio/assets-management": "3.1.*",
-        "sgsoft-studio/caching": "3.1.*",
-        "sgsoft-studio/elfinder": "3.1.*",
-        "sgsoft-studio/hook": "3.1.*",
-        "sgsoft-studio/menu": "3.1.*",
-        "sgsoft-studio/modules-management": "3.1.*",
-        "sgsoft-studio/settings": "3.1.*",
-        "sgsoft-studio/themes-management": "3.1.*",
-        "sgsoft-studio/users": "3.1.*",
-        "sgsoft-studio/pages": "3.1.*",
-        "sgsoft-studio/shortcode": "3.1.*",
-        "sgsoft-studio/custom-fields": "3.1.*",
-        "sgsoft-studio/static-blocks": "3.1.*"
-    },
-    "autoload": {
-        "psr-4": {
-            "CleanSoft\\Modules\\Core\\": "src"
-        },
-        "files": [
-
-        ]
+  "name": "cleansoftmods/module-core",
+  "description": "CleanSoft core Module",
+  "license": "",
+  "homepage": "",
+  "support": {
+    "issues": "",
+    "source": ""
+  },
+  "authors": [
+    {
+      "name": "",
+      "email": ""
     }
+  ],
+  "keywords": [],
+  "license": "MIT",
+  "type": "project",
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/CleanSoftMods/core-acl.git"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.4",
+    "doctrine/dbal": "^2.5",
+    "laravelcollective/html": "5.4.*",
+    "yajra/laravel-datatables-oracle": "^7.0",
+    "cleansoftmods/acl": "3.1.*",
+    "sgsoft-studio/assets-management": "3.1.*",
+    "sgsoft-studio/caching": "3.1.*",
+    "sgsoft-studio/elfinder": "3.1.*",
+    "sgsoft-studio/hook": "3.1.*",
+    "sgsoft-studio/menu": "3.1.*",
+    "sgsoft-studio/modules-management": "3.1.*",
+    "sgsoft-studio/settings": "3.1.*",
+    "sgsoft-studio/themes-management": "3.1.*",
+    "sgsoft-studio/users": "3.1.*",
+    "sgsoft-studio/pages": "3.1.*",
+    "sgsoft-studio/shortcode": "3.1.*",
+    "sgsoft-studio/custom-fields": "3.1.*",
+    "sgsoft-studio/static-blocks": "3.1.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "CleanSoft\\Modules\\Core\\": "src"
+    },
+    "files": [
+    ]
+  }
 }
