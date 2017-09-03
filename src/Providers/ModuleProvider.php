@@ -62,7 +62,7 @@ class ModuleProvider extends ServiceProvider
          */
         $this->app->register(\CleanSoft\Modules\Core\Shortcode\Providers\ModuleProvider::class);
         $this->app->register(\CleanSoft\Modules\Core\Caching\Providers\ModuleProvider::class);
-        $this->app->register(\CleanSoft\Modules\Core\ACL\Providers\ModuleProvider::class);
+        //$this->app->register(\CleanSoft\Modules\Core\ACL\Providers\ModuleProvider::class);
         $this->app->register(\CleanSoft\Modules\Core\ModulesManagement\Providers\ModuleProvider::class);
         $this->app->register(\CleanSoft\Modules\Core\AssetsManagement\Providers\ModuleProvider::class);
         $this->app->register(\CleanSoft\Modules\Core\Hook\Providers\ModuleProvider::class);
