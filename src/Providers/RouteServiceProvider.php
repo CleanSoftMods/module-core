@@ -1,13 +1,12 @@
 <?php
-
-namespace WebEd\Base\Providers;
+namespace CleanSoft\Modules\Core\Providers;
 
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    protected $namespace = 'WebEd\Base\Http\Controllers';
+    protected $namespace = 'CleanSoft\Modules\Core\Http\Controllers';
 
     public function boot()
     {

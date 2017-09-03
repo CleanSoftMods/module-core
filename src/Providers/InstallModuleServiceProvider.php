@@ -1,8 +1,8 @@
-<?php namespace WebEd\Base\Providers;
+<?php namespace CleanSoft\Modules\Core\Providers;
 
-use Illuminate\Support\ServiceProvider;
-use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
 
 class InstallModuleServiceProvider extends ServiceProvider
 {
@@ -75,7 +75,6 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->foreign('created_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('set null');
         });
-
         Schema::create(webed_db_prefix() . 'password_resets', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->charset = 'utf8';
@@ -86,7 +85,6 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->datetime('expired_at');
             $table->timestamps();
         });
-
         Schema::create(webed_db_prefix() . 'roles', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -95,11 +93,9 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
             $table->timestamps();
-
             $table->foreign('created_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('set null');
         });
-
         Schema::create(webed_db_prefix() . 'permissions', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -107,27 +103,22 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->string('slug', 150)->unique();
             $table->string('module', 255);
         });
-
         Schema::create(webed_db_prefix() . 'roles_permissions', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->integer('role_id')->unsigned();
             $table->integer('permission_id')->unsigned();
             $table->unique(['role_id', 'permission_id']);
-
             $table->foreign('role_id')->references('id')->on(webed_db_prefix() . 'roles')->onDelete('cascade');
             $table->foreign('permission_id')->references('id')->on(webed_db_prefix() . 'permissions')->onDelete('cascade');
         });
-
         Schema::create(webed_db_prefix() . 'users_roles', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->integer('user_id')->unsigned();
             $table->integer('role_id')->unsigned();
             $table->unique(['user_id', 'role_id']);
-
             $table->foreign('user_id')->references('id')->on(webed_db_prefix() . 'users')->onDelete('cascade');
             $table->foreign('role_id')->references('id')->on(webed_db_prefix() . 'roles')->onDelete('cascade');
         });
-
         Schema::create(webed_db_prefix() . 'settings', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -135,7 +126,6 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->text('option_value')->nullable();
             $table->timestamps();
         });
-
         Schema::create(webed_db_prefix() . 'menus', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -148,7 +138,6 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->foreign('created_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('set null');
         });
-
         Schema::create(webed_db_prefix() . 'menu_nodes', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -162,13 +151,10 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->string('css_class', 255)->nullable();
             $table->string('target', 255)->nullable();
             $table->integer('order')->unsigned()->default(0);
-
             $table->timestamps();
-
             $table->foreign('menu_id')->references('id')->on(webed_db_prefix() . 'menus')->onDelete('cascade');
             $table->foreign('parent_id')->references('id')->on(webed_db_prefix() . 'menu_nodes')->onDelete('set null');
         });
-
         Schema::create(webed_db_prefix() . 'plugins', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -178,10 +164,8 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->tinyInteger('installed', false, true)->default(0);
             $table->timestamps();
             $table->integer('updated_by')->unsigned()->nullable();
-
             $table->foreign('updated_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('set null');
         });
-
         Schema::create(webed_db_prefix() . 'core_modules', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -189,7 +173,6 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->string('installed_version', 150)->nullable();
             $table->timestamps();
         });
-
         Schema::create(webed_db_prefix() . 'pages', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -206,11 +189,9 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->integer('updated_by')->unsigned()->nullable();
             $table->softDeletes();
             $table->timestamps();
-
             $table->foreign('created_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('set null');
         });
-
         Schema::create(webed_db_prefix() . 'view_trackers', function (Blueprint $table) {
             $table->increments('id');
             $table->charset = 'utf8';
@@ -218,10 +199,8 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->string('entity', 170)->index();
             $table->integer('entity_id')->unsigned()->index();
             $table->bigInteger('count')->unsigned()->default(0)->index();
-
             $table->unique(['entity', 'entity_id']);
         });
-
         Schema::create(webed_db_prefix() . 'field_groups', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -232,11 +211,9 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->integer('created_by')->unsigned()->nullable();
             $table->integer('updated_by')->unsigned()->nullable();
             $table->timestamps();
-
             $table->foreign('created_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('cascade');
             $table->foreign('updated_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('cascade');
         });
-
         Schema::create(webed_db_prefix() . 'field_items', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -248,11 +225,9 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->string('type', 100);
             $table->text('instructions')->nullable();
             $table->text('options')->nullable();
-
             $table->foreign('field_group_id')->references('id')->on(webed_db_prefix() . 'field_groups')->onDelete('cascade');
             $table->foreign('parent_id')->references('id')->on(webed_db_prefix() . 'field_items')->onDelete('cascade');
         });
-
         Schema::create(webed_db_prefix() . 'custom_fields', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -262,10 +237,8 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->string('type', 255);
             $table->string('slug', 255);
             $table->text('value')->nullable();
-
             $table->foreign('field_item_id')->references('id')->on(webed_db_prefix() . 'field_items')->onDelete('cascade');
         });
-
         Schema::create(webed_db_prefix() . 'static_blocks', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('id');
@@ -277,11 +250,9 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->integer('updated_by')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
-
             $table->foreign('created_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('set null');
             $table->foreign('updated_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('set null');
         });
-
         Schema::create(webed_db_prefix() . 'themes', function (Blueprint $table) {
             $table->increments('id');
             $table->string('alias', 100)->unique();
@@ -290,18 +261,14 @@ class InstallModuleServiceProvider extends ServiceProvider
             $table->string('installed_version', 255)->nullable();
             $table->timestamps();
             $table->integer('updated_by')->unsigned()->nullable();
-
             $table->foreign('updated_by')->references('id')->on(webed_db_prefix() . 'users')->onDelete('set null');
         });
-
         Schema::create(webed_db_prefix() . 'theme_options', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('theme_id', false)->unsigned();
             $table->string('key', 150);
             $table->text('value')->nullable();
-
             $table->unique(['theme_id', 'key']);
-
             $table->foreign('theme_id')->references('id')->on(webed_db_prefix() . 'themes')->onDelete('cascade');
         });
     }

@@ -1,7 +1,7 @@
-<?php namespace WebEd\Base\Support;
+<?php namespace CleanSoft\Modules\Core\Support;
 
-use WebEd\Base\Repositories\Contracts\ViewTrackerRepositoryContract;
-use WebEd\Base\Repositories\ViewTrackerRepository;
+use CleanSoft\Modules\Core\Repositories\Contracts\ViewTrackerRepositoryContract;
+use CleanSoft\Modules\Core\Repositories\ViewTrackerRepository;
 
 class ViewCount
 {

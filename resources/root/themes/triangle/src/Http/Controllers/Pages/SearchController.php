@@ -12,7 +12,6 @@ class SearchController extends AbstractController
     public function __construct()
     {
         parent::__construct();
-
         $this->setPageTitle('Search posts');
     }
 
@@ -23,7 +22,6 @@ class SearchController extends AbstractController
     public function handle(PostRepositoryContract $postRepository)
     {
         $k = $this->request->get('k');
-
         $this->dis['posts'] = $postRepository
             ->pushCriteria(new SearchPostsCriteria(
                 $k,
@@ -37,7 +35,6 @@ class SearchController extends AbstractController
                 ]
             ))
             ->paginate(get_theme_option('items_per_page', 3), ['*'], $this->request->get('page') ?: 1);
-
         return $this->view('front.page-templates.search');
     }
 }

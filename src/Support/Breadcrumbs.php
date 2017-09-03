@@ -1,5 +1,4 @@
-<?php namespace WebEd\Base\Support;
-
+<?php namespace CleanSoft\Modules\Core\Support;
 class Breadcrumbs
 {
 
@@ -31,12 +30,11 @@ class Breadcrumbs
      * @param string $title
      * @param string $link
      * @param null|string $icon
-     * @return \WebEd\Base\Support\Breadcrumbs
+     * @return \CleanSoft\Modules\Core\Support\Breadcrumbs
      */
     public function addLink($title, $link = null, $icon = null)
     {
         $this->links[] = $this->templateLink($title, $link, $icon);
-
         return $this;
     }
 
@@ -58,36 +56,33 @@ class Breadcrumbs
     /**
      * Set breadcrumb class
      * @param string $class
-     * @return \WebEd\Base\Support\Breadcrumbs
+     * @return \CleanSoft\Modules\Core\Support\Breadcrumbs
      */
     public function setBreadcrumbClass($class)
     {
         $this->breadcrumbClass = $class;
-
         return $this;
     }
 
     /**
      * Set container tag name
      * @param string $tagName
-     * @return \WebEd\Base\Support\Breadcrumbs
+     * @return \CleanSoft\Modules\Core\Support\Breadcrumbs
      */
     public function setContainerTag($tagName)
     {
         $this->containerTag = $tagName;
-
         return $this;
     }
 
     /**
      * Set item tag name
      * @param string $tagName
-     * @return \WebEd\Base\Support\Breadcrumbs
+     * @return \CleanSoft\Modules\Core\Support\Breadcrumbs
      */
     public function setItemTag($tagName)
     {
         $this->itemTag = $tagName;
-
         return $this;
     }
 
@@ -102,13 +97,12 @@ class Breadcrumbs
             $htmlSrc .= '<' . $this->itemTag . '>' . $row . '</' . $this->itemTag . '>' . PHP_EOL;
         }
         $htmlSrc .= '</' . $this->containerTag . '>' . PHP_EOL;
-
         return $htmlSrc;
     }
 
     /**
      * Reset all value to default
-     * @return \WebEd\Base\Support\Breadcrumbs
+     * @return \CleanSoft\Modules\Core\Support\Breadcrumbs
      */
     public function reset()
     {
@@ -116,7 +110,6 @@ class Breadcrumbs
         $this->breadcrumbClass = 'breadcrumbs';
         $this->containerTag = 'ul';
         $this->itemTag = 'li';
-
         return $this;
     }
 }

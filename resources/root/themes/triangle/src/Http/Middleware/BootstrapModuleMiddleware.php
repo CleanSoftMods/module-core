@@ -1,6 +1,6 @@
 <?php namespace WebEd\Themes\Triangle\Http\Middleware;
 
-use \Closure;
+use Closure;
 
 class BootstrapModuleMiddleware
 {
@@ -19,7 +19,6 @@ class BootstrapModuleMiddleware
     public function handle($request, Closure $next)
     {
         $this->registerSettings();
-
         return $next($request);
     }
 
@@ -46,7 +45,6 @@ class BootstrapModuleMiddleware
                 ])
                     ->pluck('title', 'id')
                     ->toArray();
-
                 return [
                     'footer_content_page',
                     $pages,

@@ -1,11 +1,11 @@
-<?php namespace WebEd\Base\Repositories\Contracts;
+<?php namespace CleanSoft\Modules\Core\Repositories\Contracts;
 
-use WebEd\Base\Criterias\AbstractCriteria;
-use WebEd\Base\Models\Contracts\BaseModelContract;
-use Illuminate\Support\Collection;
-use WebEd\Base\Exceptions\Repositories\WrongCriteria;
-use WebEd\Base\Criterias\Contracts\CriteriaContract;
+use CleanSoft\Modules\Core\Criterias\AbstractCriteria;
+use CleanSoft\Modules\Core\Criterias\Contracts\CriteriaContract;
+use CleanSoft\Modules\Core\Exceptions\Repositories\WrongCriteria;
+use CleanSoft\Modules\Core\Models\Contracts\BaseModelContract;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 interface AbstractRepositoryContract
 {

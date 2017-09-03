@@ -1,5 +1,4 @@
 <?php
-
 return [
     'add_new' => 'Thêm mới',
     'admin_menu' => [
@@ -23,14 +22,11 @@ return [
         'save_change' => 'Lưu thay đổi',
         'select' => 'Chọn',
         'search' => 'Tìm kiếm',
-
         'basic_info' => 'Thông tin cơ bản',
-
         'choose_image' => 'Chọn hình',
         'choose_file' => 'Chọn tập tin',
         'choose_images' => 'Chọn nhiều hình',
         'choose_files' => 'Chọn nhiều tập tin',
-
         'title' => 'Tiêu đề',
         'slug' => 'Tên truy nhập',
         'content' => 'Nội dung',
@@ -43,7 +39,6 @@ return [
         'sex' => 'Giới tính',
         'is_featured' => 'Là nổi bật',
         'publish' => 'Xuất bản',
-
         'model_not_exists' => 'Dữ liệu không tồn tại với id:',
         'request_completed' => 'Yêu cầu đã được thực hiện thành công',
         'error_occurred' => 'Có lỗi xảy ra trong lúc thực hiện yêu cầu',
@@ -99,7 +94,6 @@ return [
     'stat_box' => [
         'more_info' => 'Thông tin thêm',
     ],
-
     'item_not_exists' => 'Mục này không tồn tại',
     'disabled_in_demo_mode' => 'Chức tạm tạm thời bị khóa trên trang demo',
 ];

@@ -1,5 +1,4 @@
 <?php
-
 return [
     \Constants::METHOD_NOT_ALLOWED => [
         'title' => 'Phương thức truy cập không hợp lệ',

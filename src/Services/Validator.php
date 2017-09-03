@@ -1,5 +1,4 @@
-<?php namespace WebEd\Base\Services;
-
+<?php namespace CleanSoft\Modules\Core\Services;
 class Validator
 {
     /**
@@ -27,7 +26,6 @@ class Validator
                 $messages[] = $valueRow;
             }
         }
-
         return $messages;
     }
 
@@ -55,7 +53,6 @@ class Validator
     public function reset()
     {
         $this->errors = [];
-
         return $this;
     }
 }

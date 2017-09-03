@@ -1,8 +1,7 @@
-<?php namespace WebEd\Base\Facades;
+<?php namespace CleanSoft\Modules\Core\Facades;
 
+use CleanSoft\Modules\Core\Support\SEO;
 use Illuminate\Support\Facades\Facade;
-use WebEd\Base\Support\SEO;
-use WebEd\Base\Support\ViewCount;
 
 class SeoFacade extends Facade
 {

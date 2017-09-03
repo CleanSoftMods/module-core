@@ -1,9 +1,8 @@
-<?php namespace WebEd\Base\Providers;
-
-use Illuminate\Support\ServiceProvider;
+<?php namespace CleanSoft\Modules\Core\Providers;
 
 use Form;
 use Html;
+use Illuminate\Support\ServiceProvider;
 
 class CollectiveServiceProvider extends ServiceProvider
 {
@@ -35,7 +34,6 @@ class CollectiveServiceProvider extends ServiceProvider
              */
             'values',
         ]);
-
         /**
          * Custom radio
          * Every radio in list must have the same name
@@ -59,7 +57,6 @@ class CollectiveServiceProvider extends ServiceProvider
              */
             'selected' => null,
         ]);
-
         /**
          * Select image box
          */
@@ -69,7 +66,6 @@ class CollectiveServiceProvider extends ServiceProvider
             'thumbnail' => null,
             'label' => null,
         ]);
-
         /**
          * Select file box
          */
@@ -91,7 +87,6 @@ class CollectiveServiceProvider extends ServiceProvider
             'type' => 'default',
             'tag' => 'span',
         ]);
-
         /**
          * Note
          */

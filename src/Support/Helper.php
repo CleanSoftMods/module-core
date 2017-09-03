@@ -1,6 +1,6 @@
-<?php namespace WebEd\Base\Support;
-
-class Helper {
+<?php namespace CleanSoft\Modules\Core\Support;
+class Helper
+{
     /**
      * @param $dir
      */

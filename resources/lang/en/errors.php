@@ -1,5 +1,4 @@
 <?php
-
 return [
     \Constants::METHOD_NOT_ALLOWED => [
         'title' => 'Method not allowed',

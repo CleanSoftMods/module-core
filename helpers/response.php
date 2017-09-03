@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists('response_with_messages')) {
     /**
      * @param string|array $messages
@@ -18,13 +17,12 @@ if (!function_exists('response_with_messages')) {
         ];
     }
 }
-
 if (!function_exists('flash_messages')) {
     /**
-     * @return \WebEd\Base\Services\FlashMessages
+     * @return \CleanSoft\Modules\Core\Services\FlashMessages
      */
     function flash_messages()
     {
-        return \WebEd\Base\Facades\FlashMessagesFacade::getFacadeRoot();
+        return \CleanSoft\Modules\Core\Facades\FlashMessagesFacade::getFacadeRoot();
     }
 }

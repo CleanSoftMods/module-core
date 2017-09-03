@@ -1,5 +1,4 @@
-<?php namespace WebEd\Base\Services;
-
+<?php namespace CleanSoft\Modules\Core\Services;
 class FlashMessages
 {
     /**
@@ -33,7 +32,6 @@ class FlashMessages
         foreach ((array)$messages as $key => $value) {
             array_push($this->$model, $value);
         }
-
         return $this;
     }
 
@@ -72,7 +70,6 @@ class FlashMessages
         if (property_exists($this, $type)) {
             $this->$type = [];
         }
-
         return $this;
     }
 
@@ -86,7 +83,6 @@ class FlashMessages
         $this->infoMessages = [];
         $this->successMessages = [];
         $this->warningMessages = [];
-
         return $this;
     }
 

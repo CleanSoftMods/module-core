@@ -1,12 +1,12 @@
-<?php namespace WebEd\Base\Providers;
+<?php namespace CleanSoft\Modules\Core\Providers;
 
+use CleanSoft\Modules\Core\Http\Middleware\AdminBarMiddleware;
+use CleanSoft\Modules\Core\Http\Middleware\BootstrapModuleMiddleware;
+use CleanSoft\Modules\Core\Http\Middleware\ConstructionModeMiddleware;
+use CleanSoft\Modules\Core\Http\Middleware\CorsMiddleware;
+use CleanSoft\Modules\Core\Http\Middleware\DashboardLanguageMiddleware;
 use Illuminate\Routing\Router;
 use Illuminate\Support\ServiceProvider;
-use WebEd\Base\Http\Middleware\AdminBarMiddleware;
-use WebEd\Base\Http\Middleware\BootstrapModuleMiddleware;
-use WebEd\Base\Http\Middleware\ConstructionModeMiddleware;
-use WebEd\Base\Http\Middleware\CorsMiddleware;
-use WebEd\Base\Http\Middleware\DashboardLanguageMiddleware;
 
 class MiddlewareServiceProvider extends ServiceProvider
 {
@@ -21,8 +21,7 @@ class MiddlewareServiceProvider extends ServiceProvider
          * @var Router $router
          */
         $router = $this->app['router'];
-
-        if(!is_admin_panel()) {
+        if (!is_admin_panel()) {
             $router->pushMiddlewareToGroup('web', ConstructionModeMiddleware::class);
             $router->pushMiddlewareToGroup('web', AdminBarMiddleware::class);
             $router->pushMiddlewareToGroup('api', CorsMiddleware::class);

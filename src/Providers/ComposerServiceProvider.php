@@ -1,8 +1,8 @@
-<?php namespace WebEd\Base\Providers;
+<?php namespace CleanSoft\Modules\Core\Providers;
 
+use CleanSoft\Modules\Core\Http\ViewComposers\AdminBreadcrumbsViewComposer;
+use CleanSoft\Modules\Core\Http\ViewComposers\BasePartialsViewComposer;
 use Illuminate\Support\ServiceProvider;
-use WebEd\Base\Http\ViewComposers\AdminBreadcrumbsViewComposer;
-use WebEd\Base\Http\ViewComposers\BasePartialsViewComposer;
 
 class ComposerServiceProvider extends ServiceProvider
 {

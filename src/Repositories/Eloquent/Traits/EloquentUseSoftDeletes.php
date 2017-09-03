@@ -1,8 +1,8 @@
-<?php namespace WebEd\Base\Repositories\Eloquent\Traits;
+<?php namespace CleanSoft\Modules\Core\Repositories\Eloquent\Traits;
 
+use CleanSoft\Modules\Core\Models\EloquentBase;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use WebEd\Base\Models\EloquentBase;
 
 /**
  * @property SoftDeletes|EloquentBase|Builder $model
@@ -38,12 +38,11 @@ trait EloquentUseSoftDeletes
         } else {
             $this->model = $this->model->withTrashed();
         }
-
         return $this;
     }
 
     /**
-     * @param \WebEd\Base\Models\Contracts\BaseModelContract|int|array|null $id
+     * @param \CleanSoft\Modules\Core\Models\Contracts\BaseModelContract|int|array|null $id
      * @return bool
      */
     public function restore($id = null)
@@ -59,17 +58,14 @@ trait EloquentUseSoftDeletes
         } else {
             $this->applyCriteria();
         }
-
         $this->model->restore();
-
         $this->resetModel();
-
         return true;
     }
 
     /**
      * Delete items by id
-     * @param \WebEd\Base\Models\Contracts\BaseModelContract|int|array|null $id
+     * @param \CleanSoft\Modules\Core\Models\Contracts\BaseModelContract|int|array|null $id
      * @return bool
      */
     public function forceDelete($id = null)
@@ -85,11 +81,8 @@ trait EloquentUseSoftDeletes
         } else {
             $this->applyCriteria();
         }
-
         $this->model->forceDelete();
-
         $this->resetModel();
-
         return true;
     }
 }

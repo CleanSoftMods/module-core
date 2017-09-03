@@ -27,9 +27,7 @@ class TagController extends AbstractController
     public function __construct(BlogTagRepositoryContract $repository, PostRepositoryContract $postRepository)
     {
         parent::__construct();
-
         $this->repository = $repository;
-
         $this->postRepository = $postRepository;
     }
 
@@ -40,11 +38,8 @@ class TagController extends AbstractController
     public function handle(BlogTagModelContract $item, array $data)
     {
         $this->dis = $data;
-
         $this->tag = $item;
-
         $this->dis['relatedPosts'] = get_posts_by_tag($item->id);
-
         return $this->view('front.tag-templates.default');
     }
 }

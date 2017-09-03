@@ -1,9 +1,7 @@
-<?php namespace WebEd\Base\Repositories;
+<?php namespace CleanSoft\Modules\Core\Repositories;
 
-use WebEd\Base\Models\Contracts\ViewTrackerModelContract;
-use WebEd\Base\Models\ViewTracker;
-use WebEd\Base\Repositories\Contracts\ViewTrackerRepositoryContract;
-use WebEd\Base\Repositories\Eloquent\EloquentBaseRepository;
+use CleanSoft\Modules\Core\Repositories\Contracts\ViewTrackerRepositoryContract;
+use CleanSoft\Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 
 class ViewTrackerRepository extends EloquentBaseRepository implements ViewTrackerRepositoryContract
 {
@@ -18,7 +16,6 @@ class ViewTrackerRepository extends EloquentBaseRepository implements ViewTracke
             'entity' => $entityName,
             'entity_id' => $entityId,
         ]);
-
         $this->update($viewTracker, [
             'count' => $viewTracker->count + 1
         ]);

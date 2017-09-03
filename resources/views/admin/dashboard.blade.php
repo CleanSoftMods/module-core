@@ -13,10 +13,10 @@
 @endsection
 
 @section('content')
-    <div class="row stat-boxes">
-        @php do_action(WEBED_DASHBOARD_STATS) @endphp
-    </div>
-    <div class="row other-boxes">
-        @php do_action(WEBED_DASHBOARD_OTHERS) @endphp
-    </div>
+  <div class="row stat-boxes">
+    @php do_action(WEBED_DASHBOARD_STATS) @endphp
+  </div>
+  <div class="row other-boxes">
+    @php do_action(WEBED_DASHBOARD_OTHERS) @endphp
+  </div>
 @endsection

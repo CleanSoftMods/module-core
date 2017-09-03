@@ -10,7 +10,6 @@ class FooterViewComposer
     public function compose(View $view)
     {
         $homepageId = get_theme_option('footer_content_page', 0);
-
         if ($homepageId) {
             $view->with([
                 'testimonials' => get_field($homepageId, WEBED_PAGES, 'testimonials', []),

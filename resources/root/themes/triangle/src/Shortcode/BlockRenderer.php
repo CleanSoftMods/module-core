@@ -17,13 +17,10 @@ class BlockRenderer
     {
         $this->block = $block;
         $this->attributes = $attributes;
-
         $happyMethod = '_template_' . studly_case($block->page_template);
-
         if (method_exists($this, $happyMethod)) {
             return $this->$happyMethod();
         }
-
         return $this->defaultTemplate();
     }
 

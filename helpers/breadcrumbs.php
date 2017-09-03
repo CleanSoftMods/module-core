@@ -1,11 +1,10 @@
 <?php
-
 if (!function_exists('breadcrumbs')) {
     /**
-     * @return \WebEd\Base\Support\Breadcrumbs
+     * @return \CleanSoft\Modules\Core\Support\Breadcrumbs
      */
     function breadcrumbs()
     {
-        return \WebEd\Base\Facades\BreadcrumbsFacade::getFacadeRoot();
+        return \CleanSoft\Modules\Core\Facades\BreadcrumbsFacade::getFacadeRoot();
     }
 }

@@ -1,12 +1,10 @@
-$(document).ready(function(){
+$(document).ready(function () {
     $('.login-form').validate({
         errorElement: 'span', //default input error message container
         errorClass: 'help-block help-block-error', // default input error message class
         focusInvalid: false, // do not focus the last invalid input
         ignore: "",  // validate all fields including form hidden input
-        messages: {
-
-        },
+        messages: {},
         rules: {
             password: {
                 minlength: 5,

@@ -1,7 +1,7 @@
-<?php namespace WebEd\Base\Facades;
+<?php namespace CleanSoft\Modules\Core\Facades;
 
+use CleanSoft\Modules\Core\Support\DashboardLanguage;
 use Illuminate\Support\Facades\Facade;
-use WebEd\Base\Support\DashboardLanguage;
 
 /**
  * @method static DashboardLanguage setDashboardLanguage(string $slug)

@@ -1,5 +1,4 @@
-<?php namespace WebEd\Base\Actions;
-
+<?php namespace CleanSoft\Modules\Core\Actions;
 abstract class AbstractAction
 {
     /**
@@ -12,7 +11,6 @@ abstract class AbstractAction
         if (!$message) {
             $message = trans('webed-core::base.form.error_occurred');
         }
-
         return response_with_messages($message, true, \Constants::ERROR_CODE, $data);
     }
 
@@ -26,7 +24,6 @@ abstract class AbstractAction
         if (!$message) {
             $message = trans('webed-core::base.form.request_completed');
         }
-
         return response_with_messages(
             $message,
             false,

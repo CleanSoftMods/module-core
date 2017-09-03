@@ -1,6 +1,6 @@
-<?php namespace WebEd\Base\Http\Controllers;
+<?php namespace CleanSoft\Modules\Core\Http\Controllers;
 
-use WebEd\Base\Facades\DashboardLanguageFacade;
+use CleanSoft\Modules\Core\Facades\DashboardLanguageFacade;
 
 class DashboardLanguageController extends BaseController
 {
@@ -9,7 +9,6 @@ class DashboardLanguageController extends BaseController
     public function getChangeLanguage($languageSlug)
     {
         DashboardLanguageFacade::setDashboardLanguage($languageSlug);
-
         return redirect()->back();
     }
 }

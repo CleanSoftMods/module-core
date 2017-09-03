@@ -28,9 +28,7 @@ class PostController extends AbstractController
     public function __construct(PostRepositoryContract $repository, CategoryRepositoryContract $categoryRepository)
     {
         parent::__construct();
-
         $this->repository = $repository;
-
         $this->categoryRepository = $categoryRepository;
     }
 
@@ -41,11 +39,8 @@ class PostController extends AbstractController
     public function handle(PostModelContract $item, array $data)
     {
         $this->dis = $data;
-
         $this->post = $item;
-
         $this->getMenu('category', $this->dis['categoryIds']);
-
         $happyMethod = '_template_' . studly_case($item->page_template);
         if (method_exists($this, $happyMethod)) {
             return $this->$happyMethod();

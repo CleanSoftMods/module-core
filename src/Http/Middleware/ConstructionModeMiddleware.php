@@ -1,6 +1,6 @@
-<?php namespace WebEd\Base\Http\Middleware;
+<?php namespace CleanSoft\Modules\Core\Http\Middleware;
 
-use \Closure;
+use Closure;
 
 class ConstructionModeMiddleware
 {
@@ -23,7 +23,6 @@ class ConstructionModeMiddleware
                 abort(\Constants::MAINTENANCE_MODE);
             }
         }
-
         return $next($request);
     }
 }

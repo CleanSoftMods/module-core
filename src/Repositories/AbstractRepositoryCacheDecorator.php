@@ -1,13 +1,13 @@
-<?php namespace WebEd\Base\Repositories;
+<?php namespace CleanSoft\Modules\Core\Repositories;
 
+use CleanSoft\Modules\Core\Caching\Services\Contracts\CacheableContract;
+use CleanSoft\Modules\Core\Caching\Services\Traits\Cacheable;
+use CleanSoft\Modules\Core\Criterias\AbstractCriteria;
+use CleanSoft\Modules\Core\Exceptions\Repositories\WrongCriteria;
+use CleanSoft\Modules\Core\Models\Contracts\BaseModelContract;
+use CleanSoft\Modules\Core\Repositories\Contracts\AbstractRepositoryContract;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use WebEd\Base\Criterias\AbstractCriteria;
-use WebEd\Base\Exceptions\Repositories\WrongCriteria;
-use WebEd\Base\Models\Contracts\BaseModelContract;
-use WebEd\Base\Caching\Services\Contracts\CacheableContract;
-use WebEd\Base\Caching\Services\Traits\Cacheable;
-use WebEd\Base\Repositories\Contracts\AbstractRepositoryContract;
 
 abstract class AbstractRepositoryCacheDecorator implements AbstractRepositoryContract, CacheableContract
 {
@@ -19,7 +19,7 @@ abstract class AbstractRepositoryCacheDecorator implements AbstractRepositoryCon
     protected $repository;
 
     /**
-     * @var \WebEd\Base\Caching\Services\CacheService
+     * @var \CleanSoft\Modules\Core\Caching\Services\CacheService
      */
     protected $cache;
 
@@ -34,15 +34,12 @@ abstract class AbstractRepositoryCacheDecorator implements AbstractRepositoryCon
     public function __construct($repository, $cacheKeyGroup = null)
     {
         $this->repository = $repository;
-
-        $this->cache = app(\WebEd\Base\Caching\Services\Contracts\CacheServiceContract::class);
-
+        $this->cache = app(\CleanSoft\Modules\Core\Caching\Services\Contracts\CacheServiceContract::class);
         $this->cache
             ->setCacheObject($this)
             ->setCacheGroup($cacheKeyGroup)
             ->setCacheLifetime(config('webed-caching.repository.lifetime'))
             ->setCacheFile(config('webed-caching.repository.store_keys'));
-
         $this->cacheEnabled = !!config('webed-caching.repository.enabled');
     }
 
@@ -55,7 +52,7 @@ abstract class AbstractRepositoryCacheDecorator implements AbstractRepositoryCon
     }
 
     /**
-     * @return \WebEd\Base\Caching\Services\CacheService
+     * @return \CleanSoft\Modules\Core\Caching\Services\CacheService
      */
     public function getCacheInstance()
     {
@@ -69,7 +66,6 @@ abstract class AbstractRepositoryCacheDecorator implements AbstractRepositoryCon
     public function setCacheLifetime($lifetime)
     {
         $this->cache->setCacheLifetime($lifetime);
-
         return $this;
     }
 
@@ -81,16 +77,12 @@ abstract class AbstractRepositoryCacheDecorator implements AbstractRepositoryCon
     public function beforeGet($method, $parameters)
     {
         $repository = clone $this->repository;
-
         $criterias = $this->getCriteria();
-
         $this->cache->setCacheKey($method, array_merge($parameters, $criterias));
-
         /**
          * Clear params
          */
         $this->repository->resetModel();
-
         return $this->cache->retrieveFromCache(function () use ($repository, $method, $parameters) {
             return call_user_func_array([$repository, $method], $parameters);
         });
@@ -105,11 +97,9 @@ abstract class AbstractRepositoryCacheDecorator implements AbstractRepositoryCon
     public function afterUpdate($method, $parameters, $flushCache = true, $forceFlush = false)
     {
         $result = call_user_func_array([$this->repository, $method], $parameters);
-
         if ($flushCache === true && ($forceFlush === true || $result)) {
             $this->cache->flushCache();
         }
-
         return $result;
     }
 

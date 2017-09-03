@@ -1,7 +1,7 @@
-<?php namespace WebEd\Base\Models;
+<?php namespace CleanSoft\Modules\Core\Models;
 
+use CleanSoft\Modules\Core\Models\Contracts\BaseModelContract;
 use Illuminate\Database\Eloquent\Model;
-use WebEd\Base\Models\Contracts\BaseModelContract;
 
 abstract class EloquentBase extends Model implements BaseModelContract
 {
@@ -21,7 +21,6 @@ abstract class EloquentBase extends Model implements BaseModelContract
         if (isset($this->prefix)) {
             $this->table = $this->prefix . $this->table;
         }
-
         parent::__construct($attributes);
     }
 
@@ -41,9 +40,7 @@ abstract class EloquentBase extends Model implements BaseModelContract
     public function expandFillable($attribute)
     {
         $attributes = is_array($attribute) ? $attribute : func_get_args();
-
         $this->fillable = array_unique(array_merge($attributes, $this->fillable));
-
         return $this;
     }
 

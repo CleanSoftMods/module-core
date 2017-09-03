@@ -1,4 +1,4 @@
-<?php namespace WebEd\Base\Support;
+<?php namespace CleanSoft\Modules\Core\Support;
 
 use Illuminate\Support\Collection;
 

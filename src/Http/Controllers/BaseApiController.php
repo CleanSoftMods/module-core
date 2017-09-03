@@ -1,5 +1,4 @@
-<?php namespace WebEd\Base\Http\Controllers;
-
+<?php namespace CleanSoft\Modules\Core\Http\Controllers;
 abstract class BaseApiController extends BaseController
 {
 

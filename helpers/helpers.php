@@ -1,35 +1,31 @@
 <?php
-
 if (!function_exists('admin_bar')) {
     /**
-     * @return \WebEd\Base\Support\AdminBar
+     * @return \CleanSoft\Modules\Core\Support\AdminBar
      */
     function admin_bar()
     {
-        return \WebEd\Base\Facades\AdminBarFacade::getFacadeRoot();
+        return \CleanSoft\Modules\Core\Facades\AdminBarFacade::getFacadeRoot();
     }
 }
-
 if (!function_exists('dashboard_menu')) {
     /**
-     * @return \WebEd\Base\Menu\Support\DashboardMenu
+     * @return \CleanSoft\Modules\Core\Menu\Support\DashboardMenu
      */
     function dashboard_menu()
     {
-        return \WebEd\Base\Menu\Facades\DashboardMenuFacade::getFacadeRoot();
+        return \CleanSoft\Modules\Core\Menu\Facades\DashboardMenuFacade::getFacadeRoot();
     }
 }
-
 if (!function_exists('load_module_helpers')) {
     /**
      * @param $dir
      */
     function load_module_helpers($dir)
     {
-        \WebEd\Base\Support\Helper::loadModuleHelpers($dir);
+        \CleanSoft\Modules\Core\Support\Helper::loadModuleHelpers($dir);
     }
 }
-
 if (!function_exists('get_image')) {
     /**
      * @param $image
@@ -47,7 +43,6 @@ if (!function_exists('get_image')) {
         return asset($image);
     }
 }
-
 if (!function_exists('convert_timestamp_format')) {
     /**
      * @param $dateTime
@@ -63,7 +58,6 @@ if (!function_exists('convert_timestamp_format')) {
         return $date->format($format);
     }
 }
-
 if (!function_exists('convert_unix_time_format')) {
     /**
      * @param $dateTime
@@ -79,7 +73,6 @@ if (!function_exists('convert_unix_time_format')) {
         }
     }
 }
-
 if (!function_exists('json_encode_prettify')) {
     /**
      * @param array $files
@@ -89,7 +82,6 @@ if (!function_exists('json_encode_prettify')) {
         return json_encode($data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
     }
 }
-
 if (!function_exists('is_admin_panel')) {
     /**
      * @return bool
@@ -100,11 +92,9 @@ if (!function_exists('is_admin_panel')) {
         if ($segment === config('webed.admin_route', 'admincp')) {
             return true;
         }
-
         return false;
     }
 }
-
 if (!function_exists('custom_strip_tags')) {
     /**
      * @param array|string $data
@@ -122,7 +112,6 @@ if (!function_exists('custom_strip_tags')) {
         return $data;
     }
 }
-
 if (!function_exists('limit_chars')) {
     /**
      * @param $string
@@ -146,12 +135,10 @@ if (!function_exists('limit_chars')) {
             if (mb_strlen($string) <= $limit) {
                 $append = '';
             }
-
             $string = mb_substr($string, 0, $limit);
             if (mb_substr($string, -1, 1) != ' ') {
                 $string = mb_substr($string, 0, mb_strrpos($string, ' '));
             }
-
             return $string . $append;
         }
         return mb_substr($string, 0, $limit) . $append;

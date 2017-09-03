@@ -20,6 +20,11 @@ class UpdateModuleServiceProvider extends ServiceProvider
         });
     }
 
+    protected function booted()
+    {
+        load_theme_update_batches();
+    }
+
     /**
      * Register any application services.
      *
@@ -30,10 +35,5 @@ class UpdateModuleServiceProvider extends ServiceProvider
         register_theme_update_batches([
             '1.0.5' => __DIR__ . '/../../update-batches/1.0.5.php',
         ]);
-    }
-
-    protected function booted()
-    {
-        load_theme_update_batches();
     }
 }

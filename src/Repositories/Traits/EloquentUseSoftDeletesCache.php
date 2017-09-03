@@ -1,5 +1,4 @@
-<?php namespace WebEd\Base\Repositories\Traits;
-
+<?php namespace CleanSoft\Modules\Core\Repositories\Traits;
 trait EloquentUseSoftDeletesCache
 {
     /**
@@ -23,7 +22,7 @@ trait EloquentUseSoftDeletesCache
     }
 
     /**
-     * @param \WebEd\Base\Models\Contracts\BaseModelContract|int|array|null $id
+     * @param \CleanSoft\Modules\Core\Models\Contracts\BaseModelContract|int|array|null $id
      * @return array
      */
     public function restore($id = null)

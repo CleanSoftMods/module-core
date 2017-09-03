@@ -1,15 +1,15 @@
-<?php namespace WebEd\Base\Console\Commands;
+<?php namespace CleanSoft\Modules\Core\Console\Commands;
 
+use CleanSoft\Modules\Core\ACL\Models\Role;
+use CleanSoft\Modules\Core\ACL\Repositories\Contracts\RoleRepositoryContract;
+use CleanSoft\Modules\Core\ACL\Repositories\RoleRepository;
+use CleanSoft\Modules\Core\ModulesManagement\Repositories\Contracts\CoreModulesRepositoryContract;
+use CleanSoft\Modules\Core\ModulesManagement\Repositories\CoreModulesRepository;
+use CleanSoft\Modules\Core\Providers\InstallModuleServiceProvider;
+use CleanSoft\Modules\Core\Users\Repositories\Contracts\UserRepositoryContract;
+use CleanSoft\Modules\Core\Users\Repositories\UserRepository;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
-use WebEd\Base\ACL\Models\Role;
-use WebEd\Base\ACL\Repositories\Contracts\RoleRepositoryContract;
-use WebEd\Base\ACL\Repositories\RoleRepository;
-use WebEd\Base\ModulesManagement\Repositories\Contracts\CoreModulesRepositoryContract;
-use WebEd\Base\ModulesManagement\Repositories\CoreModulesRepository;
-use WebEd\Base\Providers\InstallModuleServiceProvider;
-use WebEd\Base\Users\Repositories\Contracts\UserRepositoryContract;
-use WebEd\Base\Users\Repositories\UserRepository;
 
 class InstallCmsCommand extends Command
 {
@@ -80,15 +80,10 @@ class InstallCmsCommand extends Command
     )
     {
         parent::__construct();
-
         $this->files = $filesystem;
-
         $this->app = app();
-
         $this->coreModulesRepository = $coreModulesRepository;
-
         $this->roleRepository = $roleRepository;
-
         $this->userRepository = $userRepository;
     }
 
@@ -98,26 +93,22 @@ class InstallCmsCommand extends Command
     public function handle()
     {
         $this->createEnv();
-
         $this->getDatabaseInformation();
         /**
          * Migrate tables
          */
         $this->line('Migrate database...');
         $this->app->register(InstallModuleServiceProvider::class);
-
         $this->line('Create super admin role...');
         $this->createSuperAdminRole();
         $this->line('Create admin user...');
         $this->createAdminUser();
         $this->line('Install module dependencies...');
         $this->registerInstallModuleService();
-
         session()->flush();
         session()->regenerate();
         \Artisan::call('cache:clear');
         \Artisan::call('view:clear');
-
         $this->info("\nWebEd installed. Current version is " . get_cms_version());
     }
 
@@ -132,12 +123,10 @@ class InstallCmsCommand extends Command
         $this->dbInfo['username'] = env('DB_USERNAME');
         $this->dbInfo['password'] = env('DB_PASSWORD');
         $this->dbInfo['port'] = env('DB_PORT');
-
         if (!check_db_connection()) {
             $this->error('Please setup your database information first!');
             die();
         }
-
         $this->info('Database OK...');
     }
 
@@ -151,7 +140,6 @@ class InstallCmsCommand extends Command
             $this->info('Admin role already exists...');
             return;
         }
-
         try {
             $this->role = $this->roleRepository->find($this->roleRepository->create([
                 'name' => 'Super Admin',
@@ -188,11 +176,8 @@ class InstallCmsCommand extends Command
         $data = [
             'alias' => 'webed-core',
         ];
-
         $cmsVersion = get_cms_version();
-
         $baseCore = $this->coreModulesRepository->findWhere($data);
-
         if (!$baseCore) {
             $this->coreModulesRepository->create(array_merge($data, [
                 'installed_version' => $cmsVersion,
@@ -202,11 +187,8 @@ class InstallCmsCommand extends Command
                 'installed_version' => get_cms_version(),
             ]);
         }
-
-        $modules = get_core_module()->where('namespace', '!=', 'WebEd\Base');
-
+        $modules = get_core_module()->where('namespace', '!=', 'CleanSoft\Modules\Core');
         $corePackages = get_composer_modules();
-
         foreach ($modules as $module) {
             $namespace = str_replace('\\\\', '\\', $module['namespace'] . '\Providers\InstallModuleServiceProvider');
             if (class_exists($namespace)) {

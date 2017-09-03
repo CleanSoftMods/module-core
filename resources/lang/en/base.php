@@ -1,5 +1,4 @@
 <?php
-
 return [
     'add_new' => 'Add new',
     'admin_menu' => [
@@ -23,14 +22,11 @@ return [
         'save_change' => 'Save change',
         'select' => 'Select',
         'search' => 'Search',
-
         'basic_info' => 'Basic information',
-
         'choose_image' => 'Choose image',
         'choose_file' => 'Choose file',
         'choose_images' => 'Choose images',
         'choose_files' => 'Choose files',
-
         'title' => 'Title',
         'slug' => 'Slug',
         'content' => 'Content',
@@ -43,7 +39,6 @@ return [
         'sex' => 'Sex',
         'is_featured' => 'Is featured',
         'publish' => 'Publish',
-
         'model_not_exists' => 'Model not exists with id:',
         'request_completed' => 'Request completed',
         'error_occurred' => 'Some error occurred during your request',
@@ -99,7 +94,6 @@ return [
     'stat_box' => [
         'more_info' => 'More info',
     ],
-
     'item_not_exists' => 'Item not exists',
     'disabled_in_demo_mode' => 'This feature is disabled in demo site',
 ];

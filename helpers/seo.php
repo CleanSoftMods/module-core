@@ -1,11 +1,10 @@
 <?php
-
 if (!function_exists('seo')) {
     /**
-     * @return \WebEd\Base\Support\SEO
+     * @return \CleanSoft\Modules\Core\Support\SEO
      */
     function seo()
     {
-        return \WebEd\Base\Facades\SeoFacade::getFacadeRoot();
+        return \CleanSoft\Modules\Core\Facades\SeoFacade::getFacadeRoot();
     }
 }

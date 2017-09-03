@@ -1,6 +1,5 @@
 <?php
-
-use \Illuminate\Contracts\Pagination\LengthAwarePaginator as LengthAwarePaginatorContract;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator as LengthAwarePaginatorContract;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 if (!function_exists('pagination_advanced')) {
@@ -28,9 +27,7 @@ if (!function_exists('pagination_advanced')) {
             'go_last_title' => '&raquo;',
             'view' => 'webed-core::front._components.pagination',
         ], $params);
-
         $paginator->appends($params['allowed_query_string']);
-
         return view($params['view'], [
             'limit' => $params['limit'],
             'paginator' => $paginator,

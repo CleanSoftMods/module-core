@@ -1,8 +1,8 @@
-<?php namespace WebEd\Base\Providers;
+<?php namespace CleanSoft\Modules\Core\Providers;
 
+use CleanSoft\Modules\Core\Events\SessionStarted;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
-use WebEd\Base\Events\SessionStarted;
 
 class BootstrapModuleServiceProvider extends ServiceProvider
 {
@@ -33,7 +33,6 @@ class BootstrapModuleServiceProvider extends ServiceProvider
             'link' => route('admin::dashboard.index.get'),
             'css_class' => null,
         ]);
-
         dashboard_menu()->registerItem([
             'id' => 'webed-configuration',
             'priority' => 999,
@@ -44,7 +43,6 @@ class BootstrapModuleServiceProvider extends ServiceProvider
             'link' => route('admin::settings.index.get'),
             'css_class' => null,
         ]);
-
         cms_settings()
             ->addSettingField('site_title', [
                 'group' => 'basic',
@@ -109,9 +107,7 @@ class BootstrapModuleServiceProvider extends ServiceProvider
                     [['show_admin_bar', '1', trans('webed-core::base.settings.show_admin_bar.label'), get_setting('show_admin_bar')]],
                 ];
             });
-
         cms_settings()->addGroup('socials', trans('webed-core::base.setting_group.socials'));
-
         $socials = [
             'facebook' => [
                 'label' => trans('webed-core::base.settings.socials.facebook'),

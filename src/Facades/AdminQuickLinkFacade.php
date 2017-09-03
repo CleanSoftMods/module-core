@@ -1,7 +1,7 @@
-<?php namespace WebEd\Base\Facades;
+<?php namespace CleanSoft\Modules\Core\Facades;
 
+use CleanSoft\Modules\Core\Support\AdminQuickLink;
 use Illuminate\Support\Facades\Facade;
-use WebEd\Base\Support\AdminQuickLink;
 
 class AdminQuickLinkFacade extends Facade
 {

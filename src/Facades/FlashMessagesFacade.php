@@ -1,7 +1,7 @@
-<?php namespace WebEd\Base\Facades;
+<?php namespace CleanSoft\Modules\Core\Facades;
 
+use CleanSoft\Modules\Core\Services\FlashMessages;
 use Illuminate\Support\Facades\Facade;
-use WebEd\Base\Services\FlashMessages;
 
 class FlashMessagesFacade extends Facade
 {

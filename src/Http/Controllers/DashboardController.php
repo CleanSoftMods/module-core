@@ -1,5 +1,4 @@
-<?php namespace WebEd\Base\Http\Controllers;
-
+<?php namespace CleanSoft\Modules\Core\Http\Controllers;
 class DashboardController extends BaseAdminController
 {
     protected $module = 'webed-core';

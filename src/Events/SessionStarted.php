@@ -1,4 +1,4 @@
-<?php namespace WebEd\Base\Events;
+<?php namespace CleanSoft\Modules\Core\Events;
 
 use Illuminate\Foundation\Events\Dispatchable;
 

@@ -1,4 +1,4 @@
-<?php namespace WebEd\Base\Facades;
+<?php namespace CleanSoft\Modules\Core\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
@@ -9,6 +9,6 @@ class BreadcrumbsFacade extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return \WebEd\Base\Support\Breadcrumbs::class;
+        return \CleanSoft\Modules\Core\Support\Breadcrumbs::class;
     }
 }

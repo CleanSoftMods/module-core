@@ -1,16 +1,14 @@
-<?php namespace WebEd\Base\Repositories\Eloquent;
+<?php namespace CleanSoft\Modules\Core\Repositories\Eloquent;
 
-use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
+use CleanSoft\Modules\Core\Caching\Services\Traits\Cacheable;
+use CleanSoft\Modules\Core\Menu\Models\MenuNode;
+use CleanSoft\Modules\Core\Models\EloquentBase;
+use CleanSoft\Modules\Core\Repositories\AbstractRepositoryCacheDecorator;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Database\Eloquent\Model as EloquentModel;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use WebEd\Base\Repositories\AbstractRepositoryCacheDecorator;
-use WebEd\Base\Caching\Services\Traits\Cacheable;
-use WebEd\Base\Models\Contracts\BaseModelContract;
-use WebEd\Base\Models\EloquentBase;
-use WebEd\Base\Repositories\Eloquent\EloquentBaseRepository;
-use WebEd\Base\Menu\Models\MenuNode;
 
 /**
  * @property EloquentBaseRepository|Cacheable $repository

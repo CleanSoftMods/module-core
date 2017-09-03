@@ -1,9 +1,9 @@
 <?php namespace WebEd\Themes\Triangle\Criterias\Filters;
 
+use CleanSoft\Modules\Core\Criterias\AbstractCriteria;
+use CleanSoft\Modules\Core\Repositories\AbstractBaseRepository;
+use CleanSoft\Modules\Core\Repositories\Contracts\AbstractRepositoryContract;
 use Illuminate\Database\Eloquent\Builder;
-use WebEd\Base\Criterias\AbstractCriteria;
-use WebEd\Base\Repositories\AbstractBaseRepository;
-use WebEd\Base\Repositories\Contracts\AbstractRepositoryContract;
 use WebEd\Plugins\Blog\Models\Post;
 
 class SearchPostsCriteria extends AbstractCriteria
@@ -17,9 +17,7 @@ class SearchPostsCriteria extends AbstractCriteria
     public function __construct($keyword, array $groupBy, array $select)
     {
         $this->keyword = $keyword;
-
         $this->groupBy = $groupBy;
-
         $this->select = $select;
     }
 

@@ -1,6 +1,5 @@
 <?php
-
-namespace WebEd\Base\Http\Controllers;
+namespace CleanSoft\Modules\Core\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 

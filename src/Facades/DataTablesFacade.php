@@ -1,7 +1,7 @@
-<?php namespace WebEd\Base\Facades;
+<?php namespace CleanSoft\Modules\Core\Facades;
 
+use CleanSoft\Modules\Core\Support\DataTable\DataTables;
 use Illuminate\Support\Facades\Facade;
-use WebEd\Base\Support\DataTable\DataTables;
 
 class DataTablesFacade extends Facade
 {

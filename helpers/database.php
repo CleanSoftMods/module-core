@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists('check_db_connection')) {
     /**
      * @return bool
@@ -14,7 +13,6 @@ if (!function_exists('check_db_connection')) {
         }
     }
 }
-
 if (!function_exists('esc_sql')) {
     /**
      * @param $string
@@ -25,7 +23,6 @@ if (!function_exists('esc_sql')) {
         return app('db')->getPdo()->quote($string);
     }
 }
-
 if (!function_exists('webed_db_prefix')) {
     /**
      * @return string

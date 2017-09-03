@@ -1,7 +1,7 @@
-<?php namespace WebEd\Base\Http\Middleware;
+<?php namespace CleanSoft\Modules\Core\Http\Middleware;
 
-use \Closure;
-use WebEd\Base\Facades\DashboardLanguageFacade;
+use CleanSoft\Modules\Core\Facades\DashboardLanguageFacade;
+use Closure;
 
 class DashboardLanguageMiddleware
 {
@@ -15,9 +15,7 @@ class DashboardLanguageMiddleware
     public function handle($request, Closure $next)
     {
         $locale = DashboardLanguageFacade::getDashboardLanguage();
-
         app()->setLocale($locale);
-
         return $next($request);
     }
 }

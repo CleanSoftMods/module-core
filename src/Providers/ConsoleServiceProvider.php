@@ -1,4 +1,4 @@
-<?php namespace WebEd\Base\Providers;
+<?php namespace CleanSoft\Modules\Core\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -22,8 +22,8 @@ class ConsoleServiceProvider extends ServiceProvider
     public function register()
     {
         $this->commands([
-            \WebEd\Base\Console\Commands\InstallCmsCommand::class,
-            \WebEd\Base\Console\Commands\UpdateCmsCommand::class,
+            \CleanSoft\Modules\Core\Console\Commands\InstallCmsCommand::class,
+            \CleanSoft\Modules\Core\Console\Commands\UpdateCmsCommand::class,
         ]);
     }
 }

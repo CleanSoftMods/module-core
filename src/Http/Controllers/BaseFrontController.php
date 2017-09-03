@@ -1,4 +1,4 @@
-<?php namespace WebEd\Base\Http\Controllers;
+<?php namespace CleanSoft\Modules\Core\Http\Controllers;
 
 use Illuminate\Routing\Controller;
 
@@ -49,12 +49,10 @@ class BaseFrontController extends BaseController
         if ($data === null) {
             $data = $this->dis;
         }
-
         if ($module === null) {
             $module = $this->currentThemeName;
         }
-
-        if(view()->exists($module . '::' . $viewName)) {
+        if (view()->exists($module . '::' . $viewName)) {
             return view($module . '::' . $viewName, $data);
         }
         return view($viewName, $data);

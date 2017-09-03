@@ -18,6 +18,12 @@ class UninstallModuleServiceProvider extends ServiceProvider
         });
     }
 
+    protected function booted()
+    {
+        //acl_permission()
+        //    ->unsetPermission('Permission 1 description', 'description-1', $this->module);
+    }
+
     /**
      * Register the application services.
      *
@@ -26,11 +32,5 @@ class UninstallModuleServiceProvider extends ServiceProvider
     public function register()
     {
 
-    }
-
-    protected function booted()
-    {
-        //acl_permission()
-        //    ->unsetPermission('Permission 1 description', 'description-1', $this->module);
     }
 }

@@ -1,4 +1,4 @@
-<?php namespace WebEd\Base\Exceptions\Repositories;
+<?php namespace CleanSoft\Modules\Core\Exceptions\Repositories;
 
 use InvalidArgumentException;
 

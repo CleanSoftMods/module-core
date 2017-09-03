@@ -1,6 +1,5 @@
 <?php
-
-namespace WebEd\Base\Providers;
+namespace CleanSoft\Modules\Core\Providers;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -34,13 +33,10 @@ class ValidateServiceProvider extends ServiceProvider
     {
         Validator::extend('unique_multiple', function ($attribute, $value, $parameters, $validator) {
             $table = array_shift($parameters);
-
             $query = \DB::table($table);
-
             foreach ($parameters as $i => $field) {
                 $query->where($field, $validator->getData()[$field]);
             }
-
             // Validation result will be false if any rows match the combination
             return ($query->count() == 0);
         });
@@ -56,13 +52,11 @@ class ValidateServiceProvider extends ServiceProvider
             foreach ($formats as $format) {
                 // parse date with current format
                 $parsed = date_parse_from_format($format, $value);
-
                 // if value matches given format return true=validation succeeded
                 if ($parsed['error_count'] === 0 && $parsed['warning_count'] === 0) {
                     return true;
                 }
             }
-
             // value did not match any of the provided formats, so return false=validation failed
             return false;
         });
@@ -72,11 +66,8 @@ class ValidateServiceProvider extends ServiceProvider
     {
         Validator::extend('old_password', function ($attribute, $value, $parameters, $validator) {
             $table = array_shift($parameters);
-
             $field = $parameters[0];
-
             $currentModel = \DB::table($table)->find($parameters[1]);
-
             return Hash::check($validator->getData()[$attribute], $currentModel->$field);
         });
     }

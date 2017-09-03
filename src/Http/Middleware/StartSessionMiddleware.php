@@ -1,10 +1,10 @@
-<?php namespace WebEd\Base\Http\Middleware;
+<?php namespace CleanSoft\Modules\Core\Http\Middleware;
 
+use CleanSoft\Modules\Core\Events\SessionStarted;
 use Illuminate\Http\Request;
+use Illuminate\Session\Middleware\StartSession as IlluminateStartSession;
 use Illuminate\Session\SessionManager;
 use Illuminate\Support\Facades\Event;
-use Illuminate\Session\Middleware\StartSession as IlluminateStartSession;
-use WebEd\Base\Events\SessionStarted;
 
 class StartSessionMiddleware extends IlluminateStartSession
 {
@@ -26,7 +26,6 @@ class StartSessionMiddleware extends IlluminateStartSession
         Event::fire(new SessionStarted(
             $session = parent::startSession($request)
         ));
-
         return $session;
     }
 }

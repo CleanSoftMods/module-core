@@ -1,15 +1,13 @@
 <?php
-
 if (!function_exists('view_count')) {
     /**
-     * @return \WebEd\Base\Support\ViewCount
+     * @return \CleanSoft\Modules\Core\Support\ViewCount
      */
     function view_count()
     {
-        return \WebEd\Base\Facades\ViewCountFacade::getFacadeRoot();
+        return \CleanSoft\Modules\Core\Facades\ViewCountFacade::getFacadeRoot();
     }
 }
-
 if (!function_exists('increase_view_count')) {
     /**
      * @param $entity

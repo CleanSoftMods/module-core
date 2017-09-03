@@ -18,17 +18,17 @@ class InstallModuleServiceProvider extends ServiceProvider
         });
     }
 
+    protected function booted()
+    {
+
+    }
+
     /**
      * Register the application services.
      *
      * @return void
      */
     public function register()
-    {
-
-    }
-
-    protected function booted()
     {
 
     }

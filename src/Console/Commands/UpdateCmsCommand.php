@@ -1,4 +1,4 @@
-<?php namespace WebEd\Base\Console\Commands;
+<?php namespace CleanSoft\Modules\Core\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -31,7 +31,6 @@ class UpdateCmsCommand extends Command
     public function __construct()
     {
         parent::__construct();
-
         $this->app = app();
     }
 
@@ -41,9 +40,7 @@ class UpdateCmsCommand extends Command
     public function handle()
     {
         $modules = get_core_module();
-
         $updated = 0;
-
         foreach ($modules as $module) {
             if (
                 get_core_module_composer_version(array_get($module, 'repos')) === array_get($module, 'installed_version')
@@ -64,23 +61,19 @@ class UpdateCmsCommand extends Command
     protected function registerUpdateModuleService($module)
     {
         $this->info('Updating module: ' . $module['alias']);
-
         $updateModuleProvider = str_replace('\\\\', '\\', array_get($module, 'namespace', '') . '\Providers\UpdateModuleServiceProvider');
         if (class_exists($updateModuleProvider)) {
             $this->app->register($updateModuleProvider);
         }
-
         webed_core_modules()->saveModule($module, [
             'installed_version' => isset($module['version']) ? $module['version'] : get_core_module_composer_version(array_get($module, 'repos')),
         ]);
-
         $moduleProvider = str_replace('\\\\', '\\', array_get($module, 'namespace', '') . '\Providers\ModuleProvider');
         \Artisan::call('vendor:publish', [
             '--provider' => $moduleProvider,
             '--tag' => 'webed-public-assets',
             '--force' => true
         ]);
-
         $this->info('Module ' . $module['alias'] . ' has been updated');
     }
 }

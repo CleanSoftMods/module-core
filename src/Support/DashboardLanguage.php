@@ -1,5 +1,4 @@
-<?php namespace WebEd\Base\Support;
-
+<?php namespace CleanSoft\Modules\Core\Support;
 class DashboardLanguage
 {
     /**
@@ -20,7 +19,6 @@ class DashboardLanguage
     {
         $this->app->setLocale($slug);
         session(['dashboard_language' => $slug]);
-
         return $this;
     }
 

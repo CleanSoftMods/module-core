@@ -1,8 +1,8 @@
-$(document).ready(function(){
+$(document).ready(function () {
     /**
      * Detect IE
      */
-    WebEd.isIE(function(){
+    WebEd.isIE(function () {
         /**
          * Callback
          */

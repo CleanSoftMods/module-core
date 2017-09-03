@@ -1,10 +1,10 @@
-<?php namespace WebEd\Base\Criterias\Filter;
+<?php namespace CleanSoft\Modules\Core\Criterias\Filter;
 
+use CleanSoft\Modules\Core\Criterias\AbstractCriteria;
+use CleanSoft\Modules\Core\Models\Contracts\BaseModelContract;
+use CleanSoft\Modules\Core\Models\EloquentBase;
+use CleanSoft\Modules\Core\Repositories\Contracts\AbstractRepositoryContract;
 use Illuminate\Database\Eloquent\Builder;
-use WebEd\Base\Models\Contracts\BaseModelContract;
-use WebEd\Base\Models\EloquentBase;
-use WebEd\Base\Repositories\Contracts\AbstractRepositoryContract;
-use WebEd\Base\Criterias\AbstractCriteria;
 
 class WithViewTracker extends AbstractCriteria
 {
@@ -21,7 +21,6 @@ class WithViewTracker extends AbstractCriteria
     public function __construct(BaseModelContract $relatedModel, $screenName)
     {
         $this->relatedModel = $relatedModel;
-
         $this->screenName = $screenName;
     }
 

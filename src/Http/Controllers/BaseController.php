@@ -1,8 +1,8 @@
-<?php namespace WebEd\Base\Http\Controllers;
+<?php namespace CleanSoft\Modules\Core\Http\Controllers;
 
-use Illuminate\Routing\Controller;
+use CleanSoft\Modules\Core\Repositories\Eloquent\EloquentBaseRepository;
 use Illuminate\Http\Request;
-use WebEd\Base\Repositories\Eloquent\EloquentBaseRepository;
+use Illuminate\Routing\Controller;
 
 abstract class BaseController extends Controller
 {
@@ -35,7 +35,6 @@ abstract class BaseController extends Controller
     public function __construct()
     {
         $this->request = request();
-
         $this->adminRoute = config('webed.admin_route');
     }
 

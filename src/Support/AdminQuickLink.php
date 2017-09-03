@@ -1,5 +1,4 @@
-<?php namespace WebEd\Base\Support;
-
+<?php namespace CleanSoft\Modules\Core\Support;
 class AdminQuickLink
 {
     protected $links = [];
@@ -17,7 +16,6 @@ class AdminQuickLink
             'url' => null,
         ], $linkData);
         $this->links[$type] = $linkData;
-
         return $this;
     }
 

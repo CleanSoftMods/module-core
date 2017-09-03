@@ -1,4 +1,4 @@
-<?php namespace WebEd\Base\Mails;
+<?php namespace CleanSoft\Modules\Core\Mails;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;

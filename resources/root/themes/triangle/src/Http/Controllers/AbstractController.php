@@ -1,9 +1,9 @@
 <?php namespace WebEd\Themes\Triangle\Http\Controllers;
 
-use WebEd\Base\Caching\Services\CacheService;
-use WebEd\Base\Caching\Services\Contracts\CacheableContract;
-use WebEd\Base\Caching\Services\Traits\Cacheable;
-use WebEd\Base\Http\Controllers\BaseFrontController;
+use CleanSoft\Modules\Core\Caching\Services\CacheService;
+use CleanSoft\Modules\Core\Caching\Services\Contracts\CacheableContract;
+use CleanSoft\Modules\Core\Caching\Services\Traits\Cacheable;
+use CleanSoft\Modules\Core\Http\Controllers\BaseFrontController;
 
 abstract class AbstractController extends BaseFrontController implements CacheableContract
 {
@@ -17,11 +17,8 @@ abstract class AbstractController extends BaseFrontController implements Cacheab
     public function __construct()
     {
         parent::__construct();
-
         $this->cacheEnabled = true;
-
         $this->cacheService = app(CacheService::class);
-
         $this->cacheService
             ->setCacheObject($this)
             /**
@@ -61,7 +58,6 @@ abstract class AbstractController extends BaseFrontController implements Cacheab
                     ]
                 ]);
             });
-
         view()->share([
             'cmsMenuHtml' => $menuHtml
         ]);

@@ -1,4 +1,4 @@
-<?php namespace WebEd\Base\Exceptions;
+<?php namespace CleanSoft\Modules\Core\Exceptions;
 
 use App\Exceptions\Handler as ExceptionHandler;
 use Exception;
@@ -103,7 +103,6 @@ class Handler extends ExceptionHandler
                     break;
             }
         }
-
         return parent::render($request, $exception);
     }
 }

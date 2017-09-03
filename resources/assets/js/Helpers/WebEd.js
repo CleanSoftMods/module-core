@@ -99,27 +99,33 @@ export class WebEd {
         options = options || {};
 
         switch (type) {
-            case 'success': {
+            case 'success':
+            {
                 type = 'lime';
             }
                 break;
-            case 'info': {
+            case 'info':
+            {
                 type = 'teal';
             }
                 break;
-            case 'warning': {
+            case 'warning':
+            {
                 type = 'tangerine';
             }
                 break;
-            case 'danger': {
+            case 'danger':
+            {
                 type = 'ruby';
             }
                 break;
-            case 'error': {
+            case 'error':
+            {
                 type = 'ruby';
             }
                 break;
-            default: {
+            default:
+            {
                 type = 'ebony';
             }
                 break;
@@ -374,7 +380,7 @@ export class WebEd {
     static stringToSlug(text, separator) {
         separator = separator || '-';
         return text.toString()
-        /*To lower case*/
+            /*To lower case*/
             .toLowerCase()
             /*Vietnamese string*/
             .replace(/á|à|ả|ạ|ã|ă|ắ|ằ|ẳ|ẵ|ặ|â|ấ|ầ|ẩ|ẫ|ậ/gi, 'a')

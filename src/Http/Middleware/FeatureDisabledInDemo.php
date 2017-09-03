@@ -1,6 +1,6 @@
-<?php namespace WebEd\Base\Http\Middleware;
+<?php namespace CleanSoft\Modules\Core\Http\Middleware;
 
-use \Closure;
+use Closure;
 
 class FeatureDisabledInDemo
 {
@@ -28,7 +28,6 @@ class FeatureDisabledInDemo
                 ->showMessagesOnSession();
             return redirect()->back();
         }
-
         return $next($request);
     }
 }

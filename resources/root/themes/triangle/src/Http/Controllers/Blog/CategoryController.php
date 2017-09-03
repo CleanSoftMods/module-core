@@ -15,7 +15,6 @@ class CategoryController extends AbstractController
     public function __construct(CategoryRepositoryContract $repository)
     {
         parent::__construct();
-
         $this->repository = $repository;
     }
 
@@ -27,14 +26,10 @@ class CategoryController extends AbstractController
     public function handle(CategoryModelContract $item, array $data)
     {
         $this->dis = $data;
-
         $this->category = $item;
-
         $this->getMenu('category', $item->id);
-
         $happyMethod = '_template_' . studly_case($item->page_template);
-
-        if(method_exists($this, $happyMethod)) {
+        if (method_exists($this, $happyMethod)) {
             return $this->$happyMethod();
         }
         return $this->defaultTemplate();
@@ -62,7 +57,6 @@ class CategoryController extends AbstractController
                 'current_paged' => request()->get('page', 1),
             ],
         ]);
-
         return $this->view('front.category-templates.default');
     }
 }

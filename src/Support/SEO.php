@@ -1,6 +1,6 @@
-<?php namespace WebEd\Base\Support;
-
-class SEO {
+<?php namespace CleanSoft\Modules\Core\Support;
+class SEO
+{
     /**
      * @var array
      */

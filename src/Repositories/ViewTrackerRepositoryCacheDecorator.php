@@ -1,11 +1,10 @@
-<?php namespace WebEd\Base\Repositories;
+<?php namespace CleanSoft\Modules\Core\Repositories;
 
-use WebEd\Base\Repositories\Eloquent\EloquentBaseRepositoryCacheDecorator;
+use CleanSoft\Modules\Core\Models\Contracts\ViewTrackerModelContract;
+use CleanSoft\Modules\Core\Repositories\Contracts\ViewTrackerRepositoryContract;
+use CleanSoft\Modules\Core\Repositories\Eloquent\EloquentBaseRepositoryCacheDecorator;
 
-use WebEd\Base\Models\Contracts\ViewTrackerModelContract;
-use WebEd\Base\Repositories\Contracts\ViewTrackerRepositoryContract;
-
-class ViewTrackerRepositoryCacheDecorator extends EloquentBaseRepositoryCacheDecorator  implements ViewTrackerRepositoryContract
+class ViewTrackerRepositoryCacheDecorator extends EloquentBaseRepositoryCacheDecorator implements ViewTrackerRepositoryContract
 {
     /**
      * @param ViewTrackerModelContract $viewTracker

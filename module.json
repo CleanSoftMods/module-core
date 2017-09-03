@@ -1,9 +1,9 @@
 {
-    "repos": "sgsoft-studio/base",
-    "alias": "webed-core",
-    "name": "CleanSoft core module",
-    "author": "",
-    "description": "WebEd core module",
-    "namespace": "CleanSoft\\Modules\\Core",
-    "autoload": "psr-4"
+  "repos": "sgsoft-studio/base",
+  "alias": "webed-core",
+  "name": "CleanSoft core module",
+  "author": "",
+  "description": "WebEd core module",
+  "namespace": "CleanSoft\\Modules\\Core",
+  "autoload": "psr-4"
 }

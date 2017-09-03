@@ -1,4 +1,4 @@
-<?php namespace WebEd\Base\Providers;
+<?php namespace CleanSoft\Modules\Core\Providers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
@@ -9,6 +9,7 @@ class HookServiceProvider extends ServiceProvider
      * @var Request
      */
     protected $request;
+
     /**
      * Bootstrap any application services.
      *
@@ -18,19 +19,8 @@ class HookServiceProvider extends ServiceProvider
     {
         app()->booted(function () {
             $this->request = request();
-
             $this->booted();
         });
-    }
-
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
-    {
-
     }
 
     /**
@@ -44,11 +34,21 @@ class HookServiceProvider extends ServiceProvider
             if ($screenName !== WEBED_SETTINGS) {
                 return $data;
             }
-            if($this->request->get('_tab') === 'advanced') {
+            if ($this->request->get('_tab') === 'advanced') {
                 $data['construction_mode'] = (int)($this->request->has('construction_mode'));
                 $data['show_admin_bar'] = (int)($this->request->has('show_admin_bar'));
             }
             return $data;
         });
+    }
+
+    /**
+     * Register any application services.
+     *
+     * @return void
+     */
+    public function register()
+    {
+
     }
 }

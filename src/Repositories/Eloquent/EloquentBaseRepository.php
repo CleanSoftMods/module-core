@@ -1,11 +1,11 @@
-<?php namespace WebEd\Base\Repositories\Eloquent;
+<?php namespace CleanSoft\Modules\Core\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
-use WebEd\Base\Models\Contracts\BaseModelContract;
-use WebEd\Base\Models\EloquentBase;
-use WebEd\Base\Repositories\AbstractBaseRepository;
+use CleanSoft\Modules\Core\Models\Contracts\BaseModelContract;
+use CleanSoft\Modules\Core\Models\EloquentBase;
+use CleanSoft\Modules\Core\Repositories\AbstractBaseRepository;
 
 /**
  * @property BaseModelContract|EloquentBase|Builder $model
@@ -44,11 +44,8 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
     public function count()
     {
         $this->applyCriteria();
-
         $result = $this->model->count();
-
         $this->resetModel();
-
         return $result;
     }
 
@@ -59,11 +56,8 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
     public function first(array $columns = ['*'])
     {
         $this->applyCriteria();
-
         $result = $this->model->first($columns);
-
         $this->resetModel();
-
         return $result;
     }
 
@@ -75,11 +69,8 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
     public function find($id, $columns = ['*'])
     {
         $this->applyCriteria();
-
         $result = $this->model->find($id, $columns);
-
         $this->resetModel();
-
         return $result;
     }
 
@@ -91,14 +82,11 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
     public function findWhere(array $condition, array $columns = ['*'])
     {
         $this->applyCriteria();
-
         $this->applyConditions($condition);
         $result = $this->model
             ->select($columns)
             ->first();
-
         $this->resetModel();
-
         return $result;
     }
 
@@ -113,15 +101,12 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
         $result = $this->findWhere($condition);
         if (!$result) {
             $data = array_merge((array)$optionalFields, $condition);
-
             $fieldsToCreate = [];
-
             foreach ($data as $key => $value) {
                 if (!is_array($value)) {
                     $fieldsToCreate[$key] = $value;
                 }
             }
-
             $id = $this->create($fieldsToCreate);
             $result = $this->find($id);
         }
@@ -136,9 +121,7 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
     public function findOrNew($id)
     {
         $result = $this->model->find($id) ?: new $this->originalModel;
-
         $this->resetModel();
-
         return $result;
     }
 
@@ -149,11 +132,8 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
     public function firstOrNew(array $condition)
     {
         $this->applyConditions($condition);
-
         $result = $this->model->first() ?: new $this->originalModel;
-
         $this->resetModel();
-
         return $result;
     }
 
@@ -164,11 +144,8 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
     public function get(array $columns = ['*'])
     {
         $this->applyCriteria();
-
         $result = $this->model->get($columns);
-
         $this->resetModel();
-
         return $result;
     }
 
@@ -180,13 +157,9 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
     public function getWhere(array $condition, array $columns = ['*'])
     {
         $this->applyCriteria();
-
         $this->applyConditions($condition);
-
         $result = $this->model->get($columns);
-
         $this->resetModel();
-
         return $result;
     }
 
@@ -199,11 +172,8 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
     public function paginate($perPage, array $columns = ['*'], $currentPaged = 1)
     {
         $this->applyCriteria();
-
         $result = $this->model->paginate($perPage, $columns, 'page', $currentPaged);
-
         $this->resetModel();
-
         return $result;
     }
 
@@ -215,11 +185,8 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
     public function create(array $data, $force = false)
     {
         $method = $force ? 'forceCreate' : 'create';
-
         $item = $this->model->$method($data);
-
         $primaryKey = $this->getPrimaryKey();
-
         return $item->$primaryKey ?: $item;
     }
 
@@ -234,15 +201,11 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
          * @var EloquentBase|Builder $item
          */
         $item = $id instanceof EloquentBase ? $id : $this->model->find($id) ?: new $this->model;
-
         $item = $item->fill($data);
-
         if (!$item->save()) {
             return null;
         }
-
         $primaryKey = $this->getPrimaryKey();
-
         return $item->$primaryKey ?: $item;
     }
 
@@ -258,17 +221,12 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
         } else {
             $item = $this->model->find($id);
         }
-
         $result = $item->update($data);
-
         $this->resetModel();
-
         if (!$result) {
             return null;
         }
-
         $primaryKey = $this->getPrimaryKey();
-
         return $item->$primaryKey ?: $item;
     }
 
@@ -280,11 +238,8 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
     public function updateMultiple(array $ids, array $data)
     {
         $items = $this->model->whereIn('id', $ids);
-
         $result = $items->update($data);
-
         $this->resetModel();
-
         return $result;
     }
 
@@ -306,13 +261,9 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
         } else {
             $this->applyCriteria();
         }
-
         $method = $force ? 'forceDelete' : 'delete';
-
         $result = $this->model->$method();
-
         $this->resetModel();
-
         return !!$result;
     }
 
@@ -324,13 +275,9 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
     public function deleteWhere(array $condition, $force = false)
     {
         $this->applyConditions($condition);
-
         $method = $force ? 'forceDelete' : 'delete';
-
         $result = $this->model->$method();
-
         $this->resetModel();
-
         return !!$result;
     }
 
@@ -352,29 +299,21 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
             'with' => [],
             'criteria' => [],
         ], $params);
-
         $criteria = array_get($params, 'criteria');
-
         foreach ($criteria as $criterion) {
             $this->pushCriteria($criterion);
         }
-
         $this->applyCriteria();
-
         $this->applyConditions($params['condition']);
-
         if ($params['select']) {
             $this->model = $this->model->select($params['select']);
         }
-
         foreach ($params['order_by'] as $column => $direction) {
             $this->model = $this->model->orderBy($column, $direction);
         }
-
         foreach ($params['with'] as $with) {
             $this->model = $this->model->with($with);
         }
-
         if ($params['take'] == 1) {
             $result = $this->model->first();
         } elseif ($params['take']) {
@@ -384,9 +323,7 @@ abstract class EloquentBaseRepository extends AbstractBaseRepository
         } else {
             $result = $this->model->get();
         }
-
         $this->resetModel();
-
         return $result;
     }
 }

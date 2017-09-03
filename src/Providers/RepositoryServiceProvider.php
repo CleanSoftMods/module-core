@@ -1,10 +1,10 @@
-<?php namespace WebEd\Base\Providers;
+<?php namespace CleanSoft\Modules\Core\Providers;
 
+use CleanSoft\Modules\Core\Models\ViewTracker;
+use CleanSoft\Modules\Core\Repositories\Contracts\ViewTrackerRepositoryContract;
+use CleanSoft\Modules\Core\Repositories\ViewTrackerRepository;
+use CleanSoft\Modules\Core\Repositories\ViewTrackerRepositoryCacheDecorator;
 use Illuminate\Support\ServiceProvider;
-use WebEd\Base\Models\ViewTracker;
-use WebEd\Base\Repositories\Contracts\ViewTrackerRepositoryContract;
-use WebEd\Base\Repositories\ViewTrackerRepository;
-use WebEd\Base\Repositories\ViewTrackerRepositoryCacheDecorator;
 
 class RepositoryServiceProvider extends ServiceProvider
 {
@@ -17,11 +17,9 @@ class RepositoryServiceProvider extends ServiceProvider
     {
         $this->app->bind(ViewTrackerRepositoryContract::class, function () {
             $repository = new ViewTrackerRepository(new ViewTracker());
-
             if (config('webed-caching.repository.enabled')) {
                 return new ViewTrackerRepositoryCacheDecorator($repository);
             }
-
             return $repository;
         });
     }

@@ -1,5 +1,4 @@
 <?php
-
 if (!function_exists('split_files_with_basename')) {
     /**
      * @param array $files
@@ -14,7 +13,6 @@ if (!function_exists('split_files_with_basename')) {
         return $result;
     }
 }
-
 if (!function_exists('scan_folder')) {
     /**
      * @param $path
@@ -28,7 +26,6 @@ if (!function_exists('scan_folder')) {
         return [];
     }
 }
-
 if (!function_exists('get_folders_in_path')) {
     /**
      * @param $path
@@ -42,7 +39,6 @@ if (!function_exists('get_folders_in_path')) {
         return File::directories($path);
     }
 }
-
 if (!function_exists('get_base_folder')) {
     /**
      * @param $path
@@ -53,17 +49,13 @@ if (!function_exists('get_base_folder')) {
         if (is_dir($path)) {
             return $path;
         }
-
         $path = dirname($path);
-
         if (!ends_with('/', $path)) {
             $path .= '/';
         }
-
         return $path;
     }
 }
-
 if (!function_exists('get_file_name')) {
     /**
      * @param string $path
@@ -75,17 +67,13 @@ if (!function_exists('get_file_name')) {
         if (is_dir($path)) {
             return '';
         }
-
         $path = basename($path);
-
         if ($suffix === null) {
             return $path;
         }
-
         return str_replace($suffix, '', $path);
     }
 }
-
 if (!function_exists('get_file_data')) {
     /**
      * @param string $path
@@ -96,11 +84,9 @@ if (!function_exists('get_file_data')) {
         if (!File::exists($path) || !File::isFile($path)) {
             return null;
         }
-
         return File::get($path, true);
     }
 }
-
 if (!function_exists('save_file_data')) {
     /**
      * @param string $path
@@ -121,7 +107,6 @@ if (!function_exists('save_file_data')) {
         }
     }
 }
-
 if (!function_exists('format_file_size')) {
     /**
      * Format the file size to bytes, KB, MB, GB, TB...
@@ -133,7 +118,6 @@ if (!function_exists('format_file_size')) {
     {
         $bytes = (int)$bytes;
         $precision = (int)$precision;
-
         if ($bytes > 0) {
             $units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
             $power = $bytes > 0 ? floor(log($bytes, 1024)) : 0;

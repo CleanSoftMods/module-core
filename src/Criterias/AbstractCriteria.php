@@ -1,7 +1,7 @@
-<?php namespace WebEd\Base\Criterias;
+<?php namespace CleanSoft\Modules\Core\Criterias;
 
-use WebEd\Base\Models\Contracts\BaseModelContract;
-use WebEd\Base\Repositories\Contracts\AbstractRepositoryContract;
+use CleanSoft\Modules\Core\Models\Contracts\BaseModelContract;
+use CleanSoft\Modules\Core\Repositories\Contracts\AbstractRepositoryContract;
 
 abstract class AbstractCriteria
 {

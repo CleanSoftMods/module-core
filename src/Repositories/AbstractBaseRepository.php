@@ -1,11 +1,11 @@
-<?php namespace WebEd\Base\Repositories;
+<?php namespace CleanSoft\Modules\Core\Repositories;
 
+use CleanSoft\Modules\Core\Criterias\AbstractCriteria;
+use CleanSoft\Modules\Core\Exceptions\Repositories\WrongCriteria;
+use CleanSoft\Modules\Core\Models\Contracts\BaseModelContract;
+use CleanSoft\Modules\Core\Repositories\Contracts\AbstractRepositoryContract;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
-use WebEd\Base\Criterias\AbstractCriteria;
-use WebEd\Base\Exceptions\Repositories\WrongCriteria;
-use WebEd\Base\Models\Contracts\BaseModelContract;
-use WebEd\Base\Repositories\Contracts\AbstractRepositoryContract;
 
 abstract class AbstractBaseRepository implements AbstractRepositoryContract
 {
@@ -91,7 +91,6 @@ abstract class AbstractBaseRepository implements AbstractRepositoryContract
         if (is_object($className)) {
             $className = get_class($criteria);
         }
-
         if (isset($this->criteria[$className])) {
             unset($this->criteria[$className]);
         }
@@ -116,15 +115,12 @@ abstract class AbstractBaseRepository implements AbstractRepositoryContract
         if ($this->skipCriteria === true) {
             return $this;
         }
-
         $criteria = $this->getCriteria();
-
         if ($criteria) {
             foreach ($criteria as $className => $criterion) {
                 $this->model = $criterion->apply($this->model, $this);
             }
         }
-
         return $this;
     }
 
@@ -145,7 +141,6 @@ abstract class AbstractBaseRepository implements AbstractRepositoryContract
         $this->model = $this->originalModel;
         $this->skipCriteria = false;
         $this->criteria = [];
-
         return $this;
     }
 
@@ -156,7 +151,6 @@ abstract class AbstractBaseRepository implements AbstractRepositoryContract
     public function expandFillable(array $attributes)
     {
         $this->model = $this->model->expandFillable($attributes);
-
         return $this;
     }
 }
