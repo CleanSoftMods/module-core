@@ -25,7 +25,7 @@
     "repositories": [
         {
             "type": "vcs",
-            "url": "https://github.com/CleanSoftMods/core-acl.git"
+            "url": "https://github.com/cleansoftmods/core-acl.git"
         }
     ],
     "require": {
@@ -34,7 +34,7 @@
         "laravelcollective/html": "5.4.*",
         "maatwebsite/excel": "~2.1.0",
         "yajra/laravel-datatables-oracle": "^7.0",
-        "sgsoft-studio/acl": "4.0.x-dev",
+        "cleansoftmods/core-acl": "4.0.x-dev",
         "sgsoft-studio/assets-management": "4.0.x-dev",
         "sgsoft-studio/caching": "4.0.x-dev",
         "sgsoft-studio/elfinder": "4.0.x-dev",
