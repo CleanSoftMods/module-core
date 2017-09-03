@@ -19,6 +19,11 @@ class ModuleProvider extends ServiceProvider
     {
         //Load helpers
         Helper::loadModuleHelpers(__DIR__);
+
+        //Load helpers
+        //load_module_helpers(__DIR__);
+
+
         $this->app->singleton(ExceptionHandler::class, Handler::class);
         //Register related facades
         $loader = \Illuminate\Foundation\AliasLoader::getInstance();

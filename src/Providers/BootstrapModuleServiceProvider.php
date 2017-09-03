@@ -23,6 +23,30 @@ class BootstrapModuleServiceProvider extends ServiceProvider
      */
     protected function onSessionStarted()
     {
+        /**
+         * Register to dashboard menu
+         */
+        dashboard_menu()->registerItem([
+            'id' => 'webed-acl-roles',
+            'priority' => 3.1,
+            'parent_id' => null,
+            'heading' => null,
+            'title' => trans('webed-acl::base.roles'),
+            'font_icon' => 'icon-lock',
+            'link' => route('admin::acl-roles.index.get'),
+            'css_class' => null,
+            'permissions' => ['view-roles'],
+        ])->registerItem([
+            'id' => 'webed-acl-permissions',
+            'priority' => 3.2,
+            'parent_id' => null,
+            'heading' => null,
+            'title' => trans('webed-acl::base.permissions'),
+            'font_icon' => 'icon-shield',
+            'link' => route('admin::acl-permissions.index.get'),
+            'css_class' => null,
+            'permissions' => ['view-permissions'],
+        ]);
         dashboard_menu()->registerItem([
             'id' => 'webed-dashboard',
             'priority' => -999,
@@ -43,6 +67,15 @@ class BootstrapModuleServiceProvider extends ServiceProvider
             'link' => route('admin::settings.index.get'),
             'css_class' => null,
         ]);
+
+
+        admin_quick_link()->register('role', [
+            'title' => trans('webed-acl::base.role'),
+            'url' => route('admin::acl-roles.create.get'),
+            'icon' => 'icon-lock',
+        ]);
+
+
         cms_settings()
             ->addSettingField('site_title', [
                 'group' => 'basic',
